@@ -1,22 +1,17 @@
 
-#include "utility/common.hpp"
 #include "main/Main.h"
-#include "Display.h"
-#include "GameEngine.h"
 
-using namespace GameEngineM;
+#include "utility/common.hpp"
+#include "Display.h"
 
 int main(int argc, char ** argv)
 {
 
 	debugMessage("Starting Engine");
-	GameEngine.Init(argc,argv);
-
-	debugMessage("Loading Settings");
-	GameEngine.LoadSettings();
+	// GAMEENGINE::INIT();
 
 	debugMessage("Creating Game...");
-	auto game = GameEngine.CreateGame();
+	// auto game = GAMEENGINE::CREATE_GAME();
 
 	debugMessage("Initializing GLFW");
 	glfwInit();	
