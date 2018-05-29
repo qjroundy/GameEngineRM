@@ -131,7 +131,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Display.cpp" />
     <ClCompile Include="MainTester.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Display.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
@@ -139,6 +143,10 @@
     <Import Project="..\packages\unofficial-flayan-glew.redist.2.1.0\build\native\unofficial-flayan-glew.redist.targets" Condition="Exists('..\packages\unofficial-flayan-glew.redist.2.1.0\build\native\unofficial-flayan-glew.redist.targets')" />
     <Import Project="..\packages\unofficial-flayan-glew.2.1.0\build\native\unofficial-flayan-glew.targets" Condition="Exists('..\packages\unofficial-flayan-glew.2.1.0\build\native\unofficial-flayan-glew.targets')" />
     <Import Project="..\packages\unofficial-flayan-imgui.1.52\build\native\unofficial-flayan-imgui.targets" Condition="Exists('..\packages\unofficial-flayan-imgui.1.52\build\native\unofficial-flayan-imgui.targets')" />
+    <Import Project="..\packages\freeglut.redist.2.8.1.15\build\native\freeglut.redist.targets" Condition="Exists('..\packages\freeglut.redist.2.8.1.15\build\native\freeglut.redist.targets')" />
+    <Import Project="..\packages\freeglut.2.8.1.15\build\native\freeglut.targets" Condition="Exists('..\packages\freeglut.2.8.1.15\build\native\freeglut.targets')" />
+    <Import Project="..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets" Condition="Exists('..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets')" />
+    <Import Project="..\packages\nupengl.core.0.1.0.1\build\native\nupengl.core.targets" Condition="Exists('..\packages\nupengl.core.0.1.0.1\build\native\nupengl.core.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -150,5 +158,9 @@
     <Error Condition="!Exists('..\packages\unofficial-flayan-glew.redist.2.1.0\build\native\unofficial-flayan-glew.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\unofficial-flayan-glew.redist.2.1.0\build\native\unofficial-flayan-glew.redist.targets'))" />
     <Error Condition="!Exists('..\packages\unofficial-flayan-glew.2.1.0\build\native\unofficial-flayan-glew.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\unofficial-flayan-glew.2.1.0\build\native\unofficial-flayan-glew.targets'))" />
     <Error Condition="!Exists('..\packages\unofficial-flayan-imgui.1.52\build\native\unofficial-flayan-imgui.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\unofficial-flayan-imgui.1.52\build\native\unofficial-flayan-imgui.targets'))" />
+    <Error Condition="!Exists('..\packages\freeglut.redist.2.8.1.15\build\native\freeglut.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\freeglut.redist.2.8.1.15\build\native\freeglut.redist.targets'))" />
+    <Error Condition="!Exists('..\packages\freeglut.2.8.1.15\build\native\freeglut.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\freeglut.2.8.1.15\build\native\freeglut.targets'))" />
+    <Error Condition="!Exists('..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets'))" />
+    <Error Condition="!Exists('..\packages\nupengl.core.0.1.0.1\build\native\nupengl.core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\nupengl.core.0.1.0.1\build\native\nupengl.core.targets'))" />
   </Target>
 </Project>

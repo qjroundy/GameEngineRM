@@ -2,7 +2,7 @@
 #include "main/Main.h"
 
 #include "utility/common.hpp"
-
+#include "Display.h"
 
 int main(int argc, char ** argv)
 {
@@ -21,25 +21,8 @@ int main(int argc, char ** argv)
 	//	//exit(ERROR::ERROR_CODES::GLFW_INIT_FAILED);
 	//}
 
-#ifdef DEBUG
-	debugMessage("Setting up Graphics debugging");
-	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, true);
-#endif
 
-	debugMessage("Creating Display");
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	auto _window = glfwCreateWindow(1280, 720, "Test Window", NULL, NULL);
-	if (!_window)
-	{
-		wcout << L"Window failed to create" << endl;
-		glfwTerminate();
-	}
-
-	debugMessage("Showing Display");
-	glfwMakeContextCurrent(_window);
+	DisplayM::Display.init();
 
 	debugMessage("Initializing GLEW");
 	glewExperimental = GL_TRUE;
@@ -61,7 +44,7 @@ int main(int argc, char ** argv)
 
 	debugMessage("Starting main loop");
 	//game.startGameLoop();
-	while (!glfwWindowShouldClose(_window))
+	while (!DisplayM::Display.shouldClose())
 	{
 
 		glfwPollEvents();

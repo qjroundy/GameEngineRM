@@ -7,10 +7,9 @@
 #include <gl/glew.h>
 #include <GL/GL.h>
 #include <GL/wglew.h>
-
 #include <GLFW/glfw3.h>
 #include <soil.h>
-
+#include <GL/freeglut.h>
 #include <glm/ext.hpp>
 using namespace glm;
 
