@@ -49,8 +49,9 @@ namespace DisplayM
 		static void framebufferResize_callBack(GLFWwindow* window, int width, int height);
 	};
 
-	static _Display& Display = _Display::getInstance();
+
 }
+	static DisplayM::_Display& Display = DisplayM::_Display::getInstance();
 
 
 #endif /* __DISPLAY_H */

@@ -1,8 +1,7 @@
 #pragma once
-//
 #ifndef _COMMON_H
 #define _COMMON_H
-// This header is used by most or all GameEngine components.
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <gl/glew.h>
 #include <GL/GL.h>
@@ -21,8 +20,15 @@ using namespace glm;
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <chrono>
+#include <ctime>
 
 using namespace std;
+
+#ifndef __LOGFILE_PATH_
+#define __LOGFILE_PATH_ "error.log"
+static wofstream __LOGFILE__;
+#endif
 
 #define NEWLINE					 "\n"
 #define WIDE_NEWLINE			L"\n"
@@ -31,6 +37,7 @@ using namespace std;
 
 inline wostream& nl(wostream& o) { return o << WIDE_NEWLINE; }
 inline ostream& nl(ostream& o) { return o << NEWLINE; }
+//inline fstream& nl(fstream& o) { return o << std::endl; }
 
 #define UM	UtiltyM
 #define GM	GameM
@@ -40,10 +47,28 @@ inline ostream& nl(ostream& o) { return o << NEWLINE; }
 #define MM	ModelM
 #define RM	RenderM
 #define SM	ShaderM
+using std::chrono::system_clock;
 
-#define ECONSOLE(MSG)		wcerr << L##MSG << endl;
-#define CONSOLE(MSG)		wcout << L##MSG << nl
-#define LOG(MSG)
+
+#ifndef _NO_LOG_TIMESTAMP_
+#define TIMESTAMP TimeStamp << " : "
+inline wostream& TimeStamp(wostream& o)
+{
+	time_t t = system_clock::to_time_t(system_clock::now());
+	return o << strtok(ctime(&t),"\n");
+}
+#else
+#define TIMESTAMP ""
+#endif
+
+#define FILE_OUT(MSG)		__LOGFILE__.open(__LOGFILE_PATH_, ios::app);__LOGFILE__ << TimeStamp << " : " << L##MSG << nl;__LOGFILE__.close()
+#define ECONSOLE(MSG)		wcerr << TIMESTAMP << L##MSG << endl
+#define CONSOLE(MSG)		wcout << TIMESTAMP << L##MSG << nl
+#define EXIT_ERROR(ERR)		cin.get();exit(ERR)
+#define FELOG(MSG)			FILE_OUT("ERROR: "##MSG)
+#define FLOG(MSG)			FILE_OUT(MSG)
+#define LOG(MSG)			wcout << TimeStamp << " : " << L##MSG << nl
+#define FILOG(MSG)			FILE_OUT("INFO: "##MSG)
 #ifndef DEBUG
 	#define debugMessage(MSG)
 	#define debugConsole(MSG)	
@@ -52,10 +77,10 @@ inline ostream& nl(ostream& o) { return o << NEWLINE; }
 	#define debugLog(MSG)
 #else
 	#define debugConsole(MSG)		CONSOLE(MSG)
-	#define debugMessage(MSG)		LOG(MSG); wcout << L##MSG << nl
-	#define debugInfo(MSG)			LOG(MSG)
-	#define debugLog(MSG)			LOG(MSG)
-	#define debugError(MSG,ERR)		ECONSOLE(MSG);exit(ERR)
+	#define debugMessage(MSG)		CONSOLE(MSG)
+	#define debugInfo(MSG)			CONSOLE(MSG);FILOG(MSG)
+	#define debugLog(MSG)			CONSOLE(MSG);FLOG(MSG)
+	#define debugError(MSG,ERR)		ECONSOLE(MSG);FELOG(MSG);EXIT_ERROR(ERR)
 #endif
 
 #endif /* COMMON_HPP */

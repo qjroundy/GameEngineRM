@@ -4,7 +4,6 @@ namespace DisplayM
 {
 	_Display::_Display() 
 	{
-		init();
 	}
 
 	bool _Display::shouldClose() const

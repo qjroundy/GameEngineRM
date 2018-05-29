@@ -1,4 +1,6 @@
 #include "GameEngine.h"
+#include "Display.h"
+
 namespace GameEngineM {
 	_GameEngine::_GameEngine()
 	{
@@ -13,11 +15,44 @@ namespace GameEngineM {
 	{
 		_settings_file = "conf/settings.xml";
 
+		debugMessage("Initializing GLFW");
+		glfwInit();
+		if (!glfwInit())
+		{
+			debugError("GLFW failed to initialize....", GLFW_INIT_FAILED);
+		}
 
+		Display.init();
+		
+		debugMessage("Initializing GLEW");
+		glewExperimental = GL_TRUE;
+		if (glewInit() != GLEW_OK) {
+			debugError("Could not start GLEW", GLEW_INIT_FAILED);
+		}
+
+#ifdef DEBUG
+			glEnable(GL_DEBUG_OUTPUT);
+#endif
 	}
 
 	void _GameEngine::Init(int argc, char ** argv)
 	{
+		_settings_file = "conf/settings.xml";
+
+		debugMessage("Initializing GLFW");
+		glfwInit();
+		if (!glfwInit())
+		{
+			debugError("GLFW failed to initialize....", GLFW_INIT_FAILED);
+		}
+
+		Display.init();
+
+		debugMessage("Initializing GLEW");
+		glewExperimental = GL_TRUE;
+		if (glewInit() != GLEW_OK) {
+			debugError("Could not start GLEW", GLEW_INIT_FAILED);
+		}
 
 	}
 
@@ -25,10 +60,9 @@ namespace GameEngineM {
 	{
 	}
 
-	Game & _GameEngine::CreateGame()
+	Game _GameEngine::CreateGame()
 	{
-		r
-		// TODO: insert return statement here
+		return Game{};
 	}
 
 	_GameEngine& _GameEngine::getInstance()
