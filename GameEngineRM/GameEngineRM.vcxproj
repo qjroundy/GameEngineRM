@@ -133,16 +133,28 @@
   <ItemGroup>
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Display.cpp" />
+    <ClCompile Include="EntityShader.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="IShaderProgram.cpp" />
+    <ClCompile Include="IShaderScript.cpp" />
     <ClCompile Include="MainTester.cpp" />
+    <ClCompile Include="PlayerShader.cpp" />
+    <ClCompile Include="ShaderScript.cpp" />
+    <ClCompile Include="TerrainShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Display.h" />
+    <ClInclude Include="EntityShader.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameEngine.h" />
+    <ClInclude Include="IShaderProgram.h" />
+    <ClInclude Include="IShaderScript.h" />
     <ClInclude Include="main\Main.h" />
+    <ClInclude Include="PlayerShader.h" />
+    <ClInclude Include="ShaderScript.h" />
+    <ClInclude Include="TerrainShader.h" />
     <ClInclude Include="utility\common.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
