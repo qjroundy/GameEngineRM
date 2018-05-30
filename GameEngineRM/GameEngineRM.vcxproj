@@ -136,12 +136,21 @@
     <ClCompile Include="EntityShader.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="IMesh.cpp" />
+    <ClCompile Include="IRenderer.cpp" />
     <ClCompile Include="IShaderProgram.cpp" />
     <ClCompile Include="IShaderScript.cpp" />
+    <ClCompile Include="ITerrain.cpp" />
+    <ClCompile Include="ITexture.cpp" />
     <ClCompile Include="MainTester.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelMesh.cpp" />
+    <ClCompile Include="ModelTexture.cpp" />
     <ClCompile Include="PlayerShader.cpp" />
     <ClCompile Include="ShaderScript.cpp" />
+    <ClCompile Include="TerrainMesh.cpp" />
     <ClCompile Include="TerrainShader.cpp" />
+    <ClCompile Include="TerrainTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h" />
@@ -149,12 +158,21 @@
     <ClInclude Include="EntityShader.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameEngine.h" />
+    <ClInclude Include="IMesh.h" />
+    <ClInclude Include="IRenderer.h" />
     <ClInclude Include="IShaderProgram.h" />
     <ClInclude Include="IShaderScript.h" />
+    <ClInclude Include="ITerrain.h" />
+    <ClInclude Include="ITexture.h" />
     <ClInclude Include="main\Main.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelMesh.h" />
+    <ClInclude Include="ModelTexture.h" />
     <ClInclude Include="PlayerShader.h" />
     <ClInclude Include="ShaderScript.h" />
+    <ClInclude Include="TerrainMesh.h" />
     <ClInclude Include="TerrainShader.h" />
+    <ClInclude Include="TerrainTexture.h" />
     <ClInclude Include="utility\common.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
