@@ -35,10 +35,10 @@ namespace DisplayM
 
 		~_Display();
 
-		inline const GLint getWidth() const noexcept{ return _width; }
-		inline const GLint getHeight() const noexcept{ return _height; }
-		inline const GLint getFPSlimit() const noexcept{ return _fpsLimit; }
-		inline const GLFWwindow* const getWindow() const noexcept { return _window; }
+		inline  GLint getWidth() noexcept{ return _width; }
+		inline  GLint getHeight() noexcept{ return _height; }
+		inline  GLint getFPSlimit() noexcept{ return _fpsLimit; }
+		inline  GLFWwindow* getWindow() noexcept { return _window; }
 		bool shouldClose() const;
 
 		void init();
@@ -48,10 +48,8 @@ namespace DisplayM
 		_Display();
 		static void framebufferResize_callBack(GLFWwindow* window, int width, int height);
 	};
-
-
-}
 	static DisplayM::_Display& Display = DisplayM::_Display::getInstance();
+}
 
 
 #endif /* __DISPLAY_H */

@@ -21,7 +21,7 @@ namespace GameEngineM
 		protected:
 			GLuint _programId;
 		public:
-
+			IShaderProgram(std::map<GLenum,ShaderScript> shaders);
 			void buildProgram();
 			IShaderProgram() = delete;
 			IShaderProgram(ShaderScript vertexShader, ShaderScript fragmentShader);

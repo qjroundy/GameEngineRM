@@ -16,7 +16,7 @@ namespace GameEngineM
 		class ShaderScript : public IShaderScript
 		{
 		private:
-
+			string _shaderName; // USed for pretty output reasons...optional
 		public:
 			
 			void compileShader() override;
@@ -26,10 +26,11 @@ namespace GameEngineM
 			ShaderScript()=default;
 			
 			template<GLenum T>
-			ShaderScript(string pathToSource);
+			ShaderScript(string path);
 
 			ShaderScript(string path, GLenum type);
-
+			void setName(string name) { _shaderName = name; }
+			string getName() { return _shaderName; }
 			~ShaderScript();
 		};
 	}

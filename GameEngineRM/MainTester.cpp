@@ -1,23 +1,31 @@
 
 #include "utility/common.hpp"
 #include "main/Main.h"
-
-#include "Display.h"
-using namespace DisplayM;
-
-#include "GameEngine.h"
-using namespace GameEngineM;
-
+#include <assimp/Importer.hpp>
 #include "IShaderProgram.h"
+#include "GameEngine.h"
+#include "Display.h"
+
+using namespace GameEngineM;
+using namespace DisplayM;
 using namespace ShaderM;
+
+
 
 int main(int argc, char ** argv)
 {
-	debugMessage("Starting Engine");
-	GameEngine.Init();
+	// Splash screen????
+	// Splash screeen start.....
 
 	debugMessage("Loading Settings");
 	GameEngine.LoadSettings();
+
+
+	// Splash screen stop......
+
+	debugMessage("Starting Engine");
+	GameEngine.Init();
+	
 
 	debugMessage("Creating Game...");
 	auto game = GameEngine.CreateGame();
@@ -28,6 +36,8 @@ int main(int argc, char ** argv)
 	//auto m = alcOpenDevice(NULL);
 	//auto c = alcCreateContext(m, NULL);
 
+	// Can we load shaders on a thread and just wait for all to finish loading? parralelle loading ?
+	//ShaderM::setDefaultShaderPath("res/);
 	IShaderProgram shaderProgram( {"vertexShader.glsl", GL_VERTEX_SHADER}, {"fragmentShader.glsl",GL_FRAGMENT_SHADER} );
 
 #ifndef AUTOBUILD_SHADERS
@@ -43,13 +53,15 @@ int main(int argc, char ** argv)
 	shaderProgram.start();
 
 	debugMessage("Starting main loop");
-	//game.startGameLoop();
+	//game.startGameLoop();   // Thread?
 	while (!Display.shouldClose())
 	{
+		glClear(GL_CLEAR_BUFFER);
+
 		glfwPollEvents();
 
 
-
+		glfwSwapBuffers(Display.getWindow());
 	}
 	
 

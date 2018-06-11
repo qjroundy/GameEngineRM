@@ -17,7 +17,6 @@ namespace DisplayM
 		{
 			createDisplay();
 		}
-
 		glfwMakeContextCurrent(_window);
 	}
 
@@ -28,8 +27,8 @@ namespace DisplayM
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
 
 #ifdef DEBUG
-		//glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
-//		glEnable(GL_DEBUG_OUTPUT);
+		glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
+		glEnable(GL_DEBUG_OUTPUT);
 #endif
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -37,12 +36,10 @@ namespace DisplayM
 		if (!_window)
 		{
 			wcout << L"Window failed to create" << endl;
-			glfwTerminate();
 		}
 
 		glfwSetFramebufferSizeCallback(_window, framebufferResize_callBack);
 		glfwGetFramebufferSize(_window, &_width, &_height);
-		//_lastFrameTime = time(0) * 1000;
 	}
 
 	void _Display::showDisplay()

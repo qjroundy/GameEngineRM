@@ -1,5 +1,7 @@
 #include "ShaderScript.h"
-
+#include "Debug.h"
+#include <memory>
+#include <cstdarg>
 namespace GameEngineM
 {
 	namespace ShaderM
@@ -9,10 +11,10 @@ namespace GameEngineM
 			if (!_isCompiled)
 			{
 				debugMessage("Compiling shader.");
-			glShaderSource(_shaderId, 1, &_shaderData, NULL);
-			glCompileShader(_shaderId);
-			_isCompiled = true;
-			}
+				
+				glShaderSource(_shaderId, 1, (const_cast<const GLchar **>(&_shaderData)), NULL);
+				glCompileShader(_shaderId);
+				_isCompiled = true;			}
 		}
 
 		void ShaderScript::loadSourceShader()
@@ -20,9 +22,18 @@ namespace GameEngineM
 			if (!_isLoaded)
 			{
 				debugMessage("Loading shader source");
-				string fsrc = readFile();
-				_shaderData = fsrc.c_str();
-				_isLoaded = true;
+				auto _data = readFile();
+				if (!_data.empty())
+				{
+					debugInfo(_data);
+					_shaderData = &_data[0];
+					_isLoaded = true;
+				}
+				else
+				{
+					_isLoaded = false;
+					//throw new ExceptionShaderFailedToLoad(_shaderId, _shaderType);
+				}
 			}
 			return;
 		}
@@ -41,10 +52,25 @@ namespace GameEngineM
 
 				// Check vertex shader
 				glGetShaderiv(_shaderId, GL_COMPILE_STATUS, &result);
-				glGetShaderiv(_shaderId, GL_INFO_LOG_LENGTH, &logLength);
-				std::vector<char> shaderError((logLength > 1) ? logLength : 1);
-				glGetShaderInfoLog(_shaderId, logLength, NULL, &shaderError[0]);
-				//CONSOLE(shaderError.data);
+				if (result == GL_FALSE) // Failed to compile
+				{
+					glGetShaderiv(_shaderId, GL_INFO_LOG_LENGTH, &logLength);
+					if (logLength > 0) 
+					{
+						debugInfo("Shader compile failed, error log....");
+						std::vector<char> shaderError(logLength);
+						glGetShaderInfoLog(_shaderId, logLength, &logLength, &shaderError[0]);
+						cout << &shaderError[0] << nl;
+					}
+					else
+					{
+						debugInfo("Failed to load shader compile errors????");
+					}
+				}
+				else
+				{
+					debugInfo("Shader compiled succefully");
+				}
 			}
 		}
 

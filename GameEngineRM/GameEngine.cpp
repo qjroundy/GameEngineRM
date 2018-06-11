@@ -1,11 +1,9 @@
 #include "GameEngine.h"
 #include "Display.h"
 namespace GameEngineM {
-
 		_GameEngine::_GameEngine()
 		{
 		}
-
 
 		_GameEngine::~_GameEngine()
 		{
@@ -22,7 +20,7 @@ namespace GameEngineM {
 				debugError("GLFW failed to initialize....", GLFW_INIT_FAILED);
 			}
 
-			Display.init();
+			DisplayM::Display.init();
 
 			debugMessage("Initializing GLEW");
 			glewExperimental = GL_TRUE;
@@ -46,8 +44,8 @@ namespace GameEngineM {
 				debugError("GLFW failed to initialize....", GLFW_INIT_FAILED);
 			}
 
-			Display.init();
-
+			DisplayM::Display.init();
+			
 			debugMessage("Initializing GLEW");
 			glewExperimental = GL_TRUE;
 			if (glewInit() != GLEW_OK) {

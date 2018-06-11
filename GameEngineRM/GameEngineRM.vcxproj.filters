@@ -16,6 +16,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="scripts\entityFragmentShader.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="scripts\entityVertexShader.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="scripts\fragmentShader.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="scripts\terrainFragmentShader.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="scripts\terrainVertexShader.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="scripts\vertexShader.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainTester.cpp">

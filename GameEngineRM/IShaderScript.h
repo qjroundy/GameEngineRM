@@ -16,7 +16,7 @@ namespace GameEngineM
 			bool _isTypeKnown = false;
 			bool _isSaved = false;
 			GLuint _shaderId = 0;
-			const char * _shaderData = NULL;
+			GLchar * _shaderData{};
 			string _shaderPath = "";
 			GLenum _shaderType = 0;
 
@@ -24,11 +24,11 @@ namespace GameEngineM
 		public:
 			IShaderScript() = default;
 
-			inline const bool getShaderId() const noexcept { return _shaderId; }
-			inline const bool isCompiled() const noexcept { return _isCompiled; }
-			inline const bool isTypeKnown() const noexcept { return _isTypeKnown; }
-			inline const bool isLoaded() const noexcept { return _isLoaded; }
-			inline const bool isSaved() const noexcept { return _isSaved; }
+			inline bool getShaderId()	{ return _shaderId; }
+			inline bool isCompiled()	{ return _isCompiled; }
+			inline bool isTypeKnown()	{ return _isTypeKnown; }
+			inline bool isLoaded()		{ return _isLoaded; }
+			inline bool isSaved()		{ return _isSaved; }
 			template<GLenum T>
 			IShaderScript(string path);
 
@@ -39,7 +39,7 @@ namespace GameEngineM
 			virtual void loadSourceShader() = 0;
 			virtual void loadBinShader() = 0;
 			virtual void compileShader() = 0;
-			virtual void logErrors() = 0;
+			virtual void logErrors()=0;
 			~IShaderScript();
 		};
 	}

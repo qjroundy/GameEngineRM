@@ -1,20 +1,22 @@
 #include "IShaderScript.h"
-
+#include <vector>
 namespace GameEngineM
 {
 	namespace ShaderM
 	{
 		template<GLenum T>
 		IShaderScript::IShaderScript(string path)
-			: _shaderPath(path), _shaderType(T)
+			: _shaderPath("scripts" + path), _shaderType(T)
 		{
 			_isTypeKnown = true;
+			_shaderId = glCreateShader(T);
 		}
 
 		IShaderScript::IShaderScript(string path, GLenum type)
-			: _shaderPath(path), _shaderType(type)
+			: _shaderPath("scripts/" + path), _shaderType(type)
 		{
 			_isTypeKnown = true;
+			_shaderId = glCreateShader(type);
 		}
 
 		IShaderScript::~IShaderScript()
@@ -30,12 +32,6 @@ namespace GameEngineM
 			glDeleteShader(_shaderId);
 		}
 
-		void IShaderScript::compileShader()
-		{
-
-			_isCompiled = true;
-		}
-
 		string IShaderScript::readFile(string path)
 		{
 			string content;
@@ -43,10 +39,10 @@ namespace GameEngineM
 
 			if (!fileStream.is_open()) {
 				cerr << "Could not read file " << path << ". File does not exist." << nl;
-				return "";
 			}
 
 			string line = "";
+
 			while (!fileStream.eof()) {
 				getline(fileStream, line);
 				content.append(line + "\n");

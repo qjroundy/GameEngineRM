@@ -1,14 +1,15 @@
 #include "IShaderProgram.h"
-
+#include <algorithm>
 namespace GameEngineM
 {
 	namespace ShaderM
 	{
 		IShaderProgram::IShaderProgram(ShaderScript vertexShader, ShaderScript fragmentShader)
+			: _programId(glCreateProgram())
 		{
+
 			_shaders.insert(make_pair(GL_VERTEX_SHADER, vertexShader));
 			_shaders.insert(make_pair(GL_FRAGMENT_SHADER, fragmentShader));
-			_programId = glCreateProgram();
 
 #ifdef AUTOBUILD_SHADER
 			vertexShader.loadSourceShader();
@@ -21,14 +22,18 @@ namespace GameEngineM
 
 			buildProgram();
 #endif
-
-
 		}
 
 		//IShaderProgram::IShaderProgram()
 		//{
 		//	_programId = glCreateProgram();
 		//}
+
+		IShaderProgram::IShaderProgram(std::map<GLenum,ShaderScript> shaders)
+			: _programId(glCreateProgram())
+		{
+			_shaders.insert(shaders.begin(), shaders.end());
+		}
 
 		IShaderProgram::~IShaderProgram()
 		{
@@ -42,19 +47,45 @@ namespace GameEngineM
 				glAttachShader(_programId, s.second.getShaderId());
 			}
 
+			glProgramParameteri(_programId, GL_PROGRAM_BINARY_RETRIEVABLE_HINT, GL_TRUE);
 			glLinkProgram(_programId);
 			glValidateProgram(_programId);
+			
+			GLint binaryLength=0;
+
+			glGetProgramiv(_programId, GL_PROGRAM_BINARY_LENGTH, &binaryLength);
+			if (binaryLength > 0)
+			{
+
+				GLint formats = 0;
+
+				glGetIntegerv(GL_NUM_PROGRAM_BINARY_FORMATS, &formats);
+				GLint* binaryFormats=new GLint[formats];
+				glGetIntegerv(GL_PROGRAM_BINARY_FORMATS, binaryFormats);
+				u8 * binary = new u8[binaryLength];
+				glGetProgramBinary(_programId, binaryLength, NULL, (GLenum*)binaryFormats, binary);
+
+				FILE* fp = fopen(("shader_" + to_string(_programId) + ".bin").c_str(), "wb");
+				fwrite(binary, binaryLength, 1, fp);
+				fclose(fp);
+				delete binary;
+				debugInfo("Shader cached successfully");
+			}
+			else
+			{
+				debugLog("Shader failed to cache");
+			}
 
 		}
 
 		void IShaderProgram::attachVertexShader(ShaderScript vertexShader)
 		{
-			_shaders.insert(make_pair(GL_VERTEX_SHADER, vertexShader));
+			_shaders[GL_VERTEX_SHADER] = vertexShader;
 		}
 
 		void IShaderProgram::attachFragmentShader(ShaderScript fragmentShader)
 		{
-			_shaders.insert(make_pair(GL_FRAGMENT_SHADER, fragmentShader));
+			_shaders[GL_FRAGMENT_SHADER] = fragmentShader;
 
 		}
 
@@ -106,12 +137,12 @@ namespace GameEngineM
 		template<GLenum T>
 		void IShaderProgram::attachShader(ShaderScript shader)
 		{
-			_shaders.insert(make_pair(T, shader));
+			_shaders[T] = shader;
 		}
 
 		void IShaderProgram::attachShader(ShaderScript shader, GLenum shaderType)
 		{
-			_shaders.insert(make_pair(shaderType, shader));
+			_shaders[shaderType] = shader;
 		}
 
 		GLuint IShaderProgram::getUniformLocation(string uniformName)

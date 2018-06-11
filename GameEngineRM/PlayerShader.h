@@ -14,7 +14,6 @@ namespace GameEngineM
 			PlayerShader();
 			~PlayerShader();
 		};
-
 	}
 }
 #endif /* __I_SHADER_PROGRAM_H */

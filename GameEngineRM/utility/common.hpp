@@ -27,60 +27,53 @@ using namespace std;
 
 #ifndef __LOGFILE_PATH_
 #define __LOGFILE_PATH_ "error.log"
-static wofstream __LOGFILE__;
+static ofstream __LOGFILE__;
 #endif
 
 #define NEWLINE					 "\n"
-#define WIDE_NEWLINE			L"\n"
 #define CARRIAGE_RETURN			 "\r"
-#define WIDE_CARRIAGE_RETURN	L"\r"
 
-inline wostream& nl(wostream& o) { return o << WIDE_NEWLINE; }
 inline ostream& nl(ostream& o) { return o << NEWLINE; }
 //inline fstream& nl(fstream& o) { return o << std::endl; }
 
-#define UM	UtiltyM
-#define GM	GameM
-#define DM	DisplayM
-#define EM	EntityM
-#define TM	TerrainM
-#define MM	ModelM
-#define RM	RenderM
-#define SM	ShaderM
 using std::chrono::system_clock;
-
 
 #ifndef _NO_LOG_TIMESTAMP_
 #define TIMESTAMP TimeStamp << " : "
-inline wostream& TimeStamp(wostream& o)
+inline ostream& TimeStamp(ostream& o)
 {
 	time_t t = system_clock::to_time_t(system_clock::now());
-	return o << strtok(ctime(&t),"\n");
+	return o << strtok(ctime(&t), "\n");
 }
 #else
 #define TIMESTAMP ""
 #endif
-
-#define FILE_OUT(MSG)		__LOGFILE__.open(__LOGFILE_PATH_, ios::app);__LOGFILE__ << TimeStamp << " : " << L##MSG << nl;__LOGFILE__.close()
-#define ECONSOLE(MSG)		wcerr << TIMESTAMP << L##MSG << endl
-#define CONSOLE(MSG)		wcout << TIMESTAMP << L##MSG << nl
+#define FILE_OUT(STR)		__LOGFILE__.open(__LOGFILE_PATH_, ios::app);__LOGFILE__ << TimeStamp << " : " << STR << nl;__LOGFILE__.close()
+#define ECONSOLE(STR)		cerr << TIMESTAMP << STR << endl
+#define CONSOLE(STR)		cout << TIMESTAMP << STR << nl
 #define EXIT_ERROR(ERR)		cin.get();exit(ERR)
-#define FELOG(MSG)			FILE_OUT("ERROR: "##MSG)
-#define FLOG(MSG)			FILE_OUT(MSG)
-#define LOG(MSG)			wcout << TimeStamp << " : " << L##MSG << nl
-#define FILOG(MSG)			FILE_OUT("INFO: "##MSG)
+#define FELOG(STR)			FILE_OUT("ERROR: " << STR)
+#define FLOG(STR)			FILE_OUT(STR)
+#define LOG(STR)			cout << TimeStamp << " : " << STR << nl
+#define FILOG(STR)			FILE_OUT("INFO: " << STR)
 #ifndef DEBUG
-	#define debugMessage(MSG)
-	#define debugConsole(MSG)	
-	#define debugMessage(MSG)	
-	#define debugInfo(MSG)		
-	#define debugLog(MSG)
+#define debugMessage(MSG)
+#define debugConsole(MSG)	
+#define debugMessage(MSG)	
+#define debugInfo(MSG)	
+#define debugError(MSG,ERR)
+#define debugLog(MSG)
 #else
-	#define debugConsole(MSG)		CONSOLE(MSG)
-	#define debugMessage(MSG)		CONSOLE(MSG)
-	#define debugInfo(MSG)			CONSOLE(MSG);FILOG(MSG)
-	#define debugLog(MSG)			CONSOLE(MSG);FLOG(MSG)
-	#define debugError(MSG,ERR)		ECONSOLE(MSG);FELOG(MSG);EXIT_ERROR(ERR)
+#define debugConsole(STR)		CONSOLE(STR)
+#define debugMessage(STR)		CONSOLE(STR)
+#define debugInfo(STR)			CONSOLE(STR);FILOG(STR)
+#define debugLog(STR)			CONSOLE(STR);FLOG(STR)
+#define debugError(STR,ERR)		ECONSOLE(STR);FELOG(STR);EXIT_ERROR(ERR)
 #endif
 
+
+//
+//template <typedef ...T>
+
 #endif /* COMMON_HPP */
+
