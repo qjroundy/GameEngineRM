@@ -5,18 +5,14 @@
 #include "IShaderProgram.h"
 namespace GameEngineM
 {
-	namespace ShaderM
+	class TerrainShader :
+		public IShaderProgram
 	{
-		class TerrainShader :
-			public IShaderProgram
-		{
-		public:
-			TerrainShader()=delete;
-			TerrainShader(string name);
+	public:
+		TerrainShader() = delete;
+		TerrainShader(string name);
 
-			~TerrainShader();
-		};
-
-	}
+		~TerrainShader();
+	};
 }
 #endif /* __SHADER_SCRIPT_H_ */

@@ -1,6 +1,6 @@
 #include "ShaderProgram.h"
 
-using namespace GameEngineM::ShaderM;
+using namespace GameEngineM;
 
 ShaderProgram::ShaderProgram(ShaderScript vertexShader, ShaderScript fragmentShader)
 	: IShaderProgram(vertexShader,fragmentShader)
@@ -11,7 +11,6 @@ ShaderProgram::ShaderProgram(map<GLenum, ShaderScript> shaders)
 	: IShaderProgram(shaders)
 {
 }
-
 
 ShaderProgram::~ShaderProgram()
 {

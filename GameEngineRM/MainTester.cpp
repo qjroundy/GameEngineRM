@@ -8,8 +8,6 @@
 #include "ShaderProgram.h"
 
 using namespace GameEngineM;
-using namespace DisplayM;
-using namespace ShaderM;
 
 int main(int argc, char ** argv)
 {

@@ -8,22 +8,18 @@
 
 namespace GameEngineM
 {
-	using namespace EntityM;
-	namespace RenderM
-	{		
-		class EntityRenderer : public Renderer
-		{
-			vector<IEntity*> _entities;
+	class EntityRenderer : public Renderer
+	{
+		vector<IEntity*> _entities;
 
-		public:
+	public:
 
-			void addEntities(IEntity* entity);
-			void addEntities(vector<IEntity*> entities);
-			
-			EntityRenderer();
-			~EntityRenderer();
-		};
+		void addEntities(IEntity* entity);
+		void addEntities(vector<IEntity*> entities);
 
-	}
+		EntityRenderer();
+		~EntityRenderer();
+	};
 }
+
 #endif /* __ENTITY_RENDERER_H */

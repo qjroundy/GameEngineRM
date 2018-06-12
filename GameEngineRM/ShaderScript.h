@@ -7,32 +7,28 @@
 */
 #include "utility/common.hpp"
 #include "IShaderScript.h"
-
 #include <vector>
+
 namespace GameEngineM
 {
-	namespace ShaderM
+	class ShaderScript : public IShaderScript
 	{
-		class ShaderScript : public IShaderScript
-		{
-		private:
-			string _shaderName; // USed for pretty output reasons...optional
-		public:
-			
-			void compileShader() override;
-			void loadSourceShader() override;
-			void loadBinShader() override;
-			void logErrors() override;
-			ShaderScript()=default;
-			
-			template<GLenum T>
-			ShaderScript(string path);
+	private:
+		string _shaderName; // USed for pretty output reasons...optional
+	public:
 
-			ShaderScript(string path, GLenum type);
-			void setName(string name) { _shaderName = name; }
-			string getName() { return _shaderName; }
-			~ShaderScript();
-		};
-	}
+		void compileShader() override;
+		void loadSourceShader() override;
+		void loadBinShader() override;
+		void logErrors() override;
+		ShaderScript() = default;
+
+		template<GLenum T> ShaderScript(string path);
+
+		ShaderScript(string path, GLenum type);
+		void setName(string name) { _shaderName = name; }
+		string getName() { return _shaderName; }
+		~ShaderScript();
+	};
 }
 #endif /* __SHADER_SCRIPT_H */

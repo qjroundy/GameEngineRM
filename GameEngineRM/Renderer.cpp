@@ -2,8 +2,7 @@
 #include "IRenderer.h"
 #include "ShaderProgram.h"
 
-using namespace GameEngineM::RenderM;
-using namespace GameEngineM::ShaderM;
+using namespace GameEngineM;
 
 Renderer::Renderer(ShaderProgram shaderProgram)
 	: IRenderer(shaderProgram)

@@ -20,7 +20,7 @@ namespace GameEngineM {
 			debugError("GLFW failed to initialize....", GLFW_INIT_FAILED);
 		}
 
-		DisplayM::Display.init();
+		Display.init();
 
 		debugMessage("Initializing GLEW");
 		glewExperimental = GL_TRUE;
@@ -44,7 +44,7 @@ namespace GameEngineM {
 			debugError("GLFW failed to initialize....", GLFW_INIT_FAILED);
 		}
 
-		DisplayM::Display.init();
+		Display.init();
 			
 		debugMessage("Initializing GLEW");
 		glewExperimental = GL_TRUE;
@@ -58,15 +58,14 @@ namespace GameEngineM {
 	{
 	}
 
-	GameM::Game _GameEngine::CreateGame()
+	Game _GameEngine::CreateGame()
 	{
-		return GameM::Game{};
+		return Game{};
 	}
 
 	_GameEngine& _GameEngine::getInstance()
 	{
 		static _GameEngine __instance__;
 		return __instance__;
-		// TODO: insert return statement here
 	}
 }

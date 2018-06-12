@@ -7,26 +7,21 @@
 #include <map>
 
 namespace GameEngineM {
-	namespace ShaderM
+	class ShaderProgram : public IShaderProgram
 	{
+	private:
+		map<GLuint, string> _attributes;
 
-		class ShaderProgram : public IShaderProgram
-		{
-		private:
-			map<GLuint, string> _attributes;
+	public:
+		ShaderProgram() = default;
+		ShaderProgram(ShaderScript vertexShader, ShaderScript fragmentShader);
+		ShaderProgram(map<GLenum, ShaderScript> shaders);
 
-		public:
-			ShaderProgram()=default;
-			ShaderProgram(ShaderScript vertexShader, ShaderScript fragmentShader);
-			ShaderProgram(map<GLenum, ShaderScript> shaders);
-
-			~ShaderProgram();
-			void addAttribute(GLuint idx, string attribName) override;
-			void addAttribute(string attribName) override;
-			void getAllUniformLocations() override;
-			void bindAttributes() override;
-		};
-
-	}
+		~ShaderProgram();
+		void addAttribute(GLuint idx, string attribName) override;
+		void addAttribute(string attribName) override;
+		void getAllUniformLocations() override;
+		void bindAttributes() override;
+	};
 }
 #endif __SHADER_PROGRAM_H

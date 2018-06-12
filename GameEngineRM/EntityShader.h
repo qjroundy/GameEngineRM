@@ -5,18 +5,14 @@
 
 namespace GameEngineM
 {
-	namespace ShaderM
+
+	class EntityShader :
+		public IShaderProgram
 	{
-
-		class EntityShader :
-			public IShaderProgram
-		{
-		public:
-			EntityShader();
-			~EntityShader();
-		};
-
-	}
+	public:
+		EntityShader();
+		~EntityShader();
+	};
 }
 
 #endif /* __ENTITY_SHADER_H */

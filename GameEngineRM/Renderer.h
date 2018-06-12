@@ -7,22 +7,17 @@
 
 namespace GameEngineM
 {
-	namespace RenderM
+	class Renderer : public IRenderer
 	{
+	public:
+		void start() override {};
+		void stop() override {};
+		void init() override {};
+		void render() override {};
 
-		class Renderer : public IRenderer
-		{
-		public:
-			void start() override {};
-			void stop() override {};
-			void init() override {};
-			void render() override {};
-
-			Renderer()=delete;
-			Renderer(ShaderProgram shaderProgram);
-			~Renderer();
-		};
-
-	}
+		Renderer() = delete;
+		Renderer(ShaderProgram shaderProgram);
+		~Renderer();
+	};
 }
 #endif /* __RENDERER_H */

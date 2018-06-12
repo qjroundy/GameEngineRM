@@ -4,30 +4,23 @@
 #define __MASTER_RENDERER_H
 #include "utility/common.hpp"
 #include "Renderer.h"
+#include <vector>
 
 namespace GameEngineM
 {
-	namespace RenderM
+	class MasterRenderer
+
+		//:public IRenderer
 	{
+		vector<Renderer> _renderers;
+	public:
+		MasterRenderer() = default;
+		MasterRenderer(vector<Renderer> renderers);
 
-		class MasterRenderer 
+		void attachRenderer(Renderer renderer);
+		void detachRenderer(Renderer renderer);
 
-			//:public IRenderer
-		{
-			vector<Renderer> _renderers;
-		public:
-			MasterRenderer()=default;
-			MasterRenderer(vector<Renderer> renderers);
-
-			void attachRenderer(Renderer renderer);
-			void detachRenderer(Renderer renderer);
-			//void init() override;
-			//void start() override;
-			//void render() override;
-			//void stop() override;
-			
-			~MasterRenderer();
-		};
-	}
+		~MasterRenderer();
+	};
 }
 #endif /* __MASTER_RENDERER_H */

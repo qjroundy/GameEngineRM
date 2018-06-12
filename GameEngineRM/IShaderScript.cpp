@@ -1,7 +1,7 @@
 #include "IShaderScript.h"
 #include <vector>
 
-using namespace GameEngineM::ShaderM;
+using namespace GameEngineM;
 
 template<GLenum T>
 IShaderScript::IShaderScript(string path)

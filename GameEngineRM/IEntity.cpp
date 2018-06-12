@@ -1,6 +1,6 @@
 #include "IEntity.h"
 
-using namespace GameEngineM::EntityM;
+using namespace GameEngineM;
 
 IEntity::IEntity()
 {

@@ -5,15 +5,12 @@
 
 namespace GameEngineM
 {
-	namespace ShaderM
+	class PlayerShader :
+		public IShaderProgram
 	{
-		class PlayerShader :
-			public IShaderProgram
-		{
-		public:
-			PlayerShader();
-			~PlayerShader();
-		};
-	}
+	public:
+		PlayerShader();
+		~PlayerShader();
+	};
 }
 #endif /* __I_SHADER_PROGRAM_H */

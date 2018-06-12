@@ -1,6 +1,6 @@
 #include "Game.h"
 
-using namespace GameEngineM::GameM;
+using namespace GameEngineM;
 
 Game::Game()
 {

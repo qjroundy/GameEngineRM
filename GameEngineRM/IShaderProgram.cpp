@@ -1,7 +1,7 @@
 #include "IShaderProgram.h"
 #include <algorithm>
 
-using namespace GameEngineM::ShaderM;
+using namespace GameEngineM;
 	
 IShaderProgram::IShaderProgram(ShaderScript vertexShader, ShaderScript fragmentShader)
 	: _programId(glCreateProgram())

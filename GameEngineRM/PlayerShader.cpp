@@ -1,6 +1,6 @@
 #include "PlayerShader.h"
 
-using namespace GameEngineM::ShaderM;
+using namespace GameEngineM;
 
 PlayerShader::~PlayerShader()
 {

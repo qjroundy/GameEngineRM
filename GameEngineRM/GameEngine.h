@@ -5,40 +5,39 @@
 #include "utility/common.hpp"
 #include "Game.h"
 
-	namespace GameEngineM
+namespace GameEngineM
+{
+	enum EXIT_CODES
 	{
-		enum EXIT_CODES
-		{
-			NO_GL_CONTEXT = -1,
-			WINDOW_FAILED_TO_OPEN = -2,
-			DEFAULT_FILE_MISSING = -3,
-			GLEW_INIT_FAILED = -4,
-			GLFW_INIT_FAILED = -5
-		};
+		NO_GL_CONTEXT = -1,
+		WINDOW_FAILED_TO_OPEN = -2,
+		DEFAULT_FILE_MISSING = -3,
+		GLEW_INIT_FAILED = -4,
+		GLFW_INIT_FAILED = -5
+	};
 
-		
-		class _GameEngine
-		{
-		private:
-			_GameEngine();
-			string _settings_file;
 
-		public:
-			_GameEngine(const _GameEngine&) = delete;
-			void operator=(const _GameEngine&) = delete;
+	class _GameEngine
+	{
+	private:
+		_GameEngine();
+		string _settings_file;
 
-			~_GameEngine();
+	public:
+		_GameEngine(const _GameEngine&) = delete;
+		void operator=(const _GameEngine&) = delete;
 
-			void Init();
-			void Init(int, char**);
+		~_GameEngine();
 
-			void LoadSettings();
-			GameM::Game CreateGame();
+		void Init();
+		void Init(int, char**);
 
-			static _GameEngine& getInstance();
-		};
+		void LoadSettings();
+		Game CreateGame();
 
-		static _GameEngine& GameEngine = _GameEngine::getInstance();
-	
+		static _GameEngine& getInstance();
+	};
+
+	static _GameEngine& GameEngine = _GameEngine::getInstance();
 }
 #endif /* __GAME_ENGINE_H */

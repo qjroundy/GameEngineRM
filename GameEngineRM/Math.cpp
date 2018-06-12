@@ -1,6 +1,6 @@
 #include "Math.h"
 
-using namespace GameEngineM::MathM;
+using namespace GameEngineM;
 
 mat4 createTransformationMatrix(
 	vec3 translation,

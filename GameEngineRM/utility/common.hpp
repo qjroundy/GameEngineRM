@@ -71,7 +71,6 @@ inline ostream& TimeStamp(ostream& o)
 #define debugError(STR,ERR)		ECONSOLE(STR);FELOG(STR);EXIT_ERROR(ERR)
 #endif
 
-
 //
 //template <typedef ...T>
 

@@ -3,7 +3,7 @@
 #include <memory>
 #include <cstdarg>
 
-using namespace GameEngineM::ShaderM;
+using namespace GameEngineM;
 
 void ShaderScript::compileShader()
 {

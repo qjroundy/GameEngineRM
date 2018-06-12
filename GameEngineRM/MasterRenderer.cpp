@@ -1,6 +1,6 @@
 #include "MasterRenderer.h"
 
-using namespace GameEngineM::RenderM;
+using namespace GameEngineM;
 
 void MasterRenderer::attachRenderer(Renderer renderer)
 {
