@@ -2,92 +2,89 @@
 #include "Debug.h"
 #include <memory>
 #include <cstdarg>
-namespace GameEngineM
+
+using namespace GameEngineM::ShaderM;
+
+void ShaderScript::compileShader()
 {
-	namespace ShaderM
+	if (!_isCompiled)
 	{
-		void ShaderScript::compileShader()
-		{
-			if (!_isCompiled)
-			{
-				debugMessage("Compiling shader.");
+		debugMessage("Compiling shader.");
 				
-				glShaderSource(_shaderId, 1, (const_cast<const GLchar **>(&_shaderData)), NULL);
-				glCompileShader(_shaderId);
-				_isCompiled = true;			}
-		}
+		glShaderSource(_shaderId, 1, (const_cast<const GLchar **>(&_shaderData)), NULL);
+		glCompileShader(_shaderId);
+		_isCompiled = true;			}
+}
 
-		void ShaderScript::loadSourceShader()
+void ShaderScript::loadSourceShader()
+{
+	if (!_isLoaded)
+	{
+		debugMessage("Loading shader source");
+		auto _data = readFile();
+		if (!_data.empty())
 		{
-			if (!_isLoaded)
-			{
-				debugMessage("Loading shader source");
-				auto _data = readFile();
-				if (!_data.empty())
-				{
-					debugInfo(_data);
-					_shaderData = &_data[0];
-					_isLoaded = true;
-				}
-				else
-				{
-					_isLoaded = false;
-					//throw new ExceptionShaderFailedToLoad(_shaderId, _shaderType);
-				}
-			}
-			return;
+			debugInfo(_data);
+			_shaderData = &_data[0];
+			_isLoaded = true;
 		}
-
-		void ShaderScript::loadBinShader()
+		else
 		{
-			//glShaderBinary(1,&_shaderType,); //incomplete...
-		}
-
-		void ShaderScript::logErrors()
-		{
-			if (_isLoaded && _isCompiled)
-			{
-				GLint result = GL_FALSE;
-				int logLength = 0;
-
-				// Check vertex shader
-				glGetShaderiv(_shaderId, GL_COMPILE_STATUS, &result);
-				if (result == GL_FALSE) // Failed to compile
-				{
-					glGetShaderiv(_shaderId, GL_INFO_LOG_LENGTH, &logLength);
-					if (logLength > 0) 
-					{
-						debugInfo("Shader compile failed, error log....");
-						std::vector<char> shaderError(logLength);
-						glGetShaderInfoLog(_shaderId, logLength, &logLength, &shaderError[0]);
-						cout << &shaderError[0] << nl;
-					}
-					else
-					{
-						debugInfo("Failed to load shader compile errors????");
-					}
-				}
-				else
-				{
-					debugInfo("Shader compiled succefully");
-				}
-			}
-		}
-
-		template<GLenum T>
-		ShaderScript::ShaderScript(string pathToSource)
-			: IShaderScript(pathToSource)
-		{
-		}
-
-		ShaderScript::ShaderScript(string path, GLenum type)
-			: IShaderScript(path,type)
-		{
-
-		}
-
-		ShaderScript::~ShaderScript()
-		{
+			_isLoaded = false;
+			//throw new ExceptionShaderFailedToLoad(_shaderId, _shaderType);
 		}
 	}
+	return;
+}
+
+void ShaderScript::loadBinShader()
+{
+	//glShaderBinary(1,&_shaderType,); //incomplete...
+}
+
+void ShaderScript::logErrors()
+{
+	if (_isLoaded && _isCompiled)
+	{
+		GLint result = GL_FALSE;
+		int logLength = 0;
+
+		// Check vertex shader
+		glGetShaderiv(_shaderId, GL_COMPILE_STATUS, &result);
+		if (result == GL_FALSE) // Failed to compile
+		{
+			glGetShaderiv(_shaderId, GL_INFO_LOG_LENGTH, &logLength);
+			if (logLength > 0) 
+			{
+				debugInfo("Shader compile failed, error log....");
+				std::vector<char> shaderError(logLength);
+				glGetShaderInfoLog(_shaderId, logLength, &logLength, &shaderError[0]);
+				cout << &shaderError[0] << nl;
+			}
+			else
+			{
+				debugInfo("Failed to load shader compile errors????");
+			}
+		}
+		else
+		{
+			debugInfo("Shader compiled succefully");
+		}
+	}
+}
+
+template<GLenum T>
+ShaderScript::ShaderScript(string pathToSource)
+	: IShaderScript(pathToSource)
+{
+}
+
+ShaderScript::ShaderScript(string path, GLenum type)
+	: IShaderScript(path,type)
+{
+
+}
+
+ShaderScript::~ShaderScript()
+{
 }

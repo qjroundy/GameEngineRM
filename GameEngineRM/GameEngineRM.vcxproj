@@ -139,26 +139,43 @@
   <ItemGroup>
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Display.cpp" />
+    <ClCompile Include="EntityRenderer.cpp" />
     <ClCompile Include="EntityShader.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="IEntity.cpp" />
+    <ClCompile Include="IRenderer.cpp" />
     <ClCompile Include="IShaderProgram.cpp" />
     <ClCompile Include="IShaderScript.cpp" />
     <ClCompile Include="MainTester.cpp" />
+    <ClCompile Include="MasterRenderer.cpp" />
+    <ClCompile Include="Math.cpp" />
+    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="PlayerShader.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="ShaderScript.cpp" />
     <ClCompile Include="TerrainShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Display.h" />
+    <ClInclude Include="EntityRenderer.h" />
     <ClInclude Include="EntityShader.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameEngine.h" />
+    <ClInclude Include="IEntity.h" />
+    <ClInclude Include="IRenderer.h" />
     <ClInclude Include="IShaderProgram.h" />
     <ClInclude Include="IShaderScript.h" />
+    <ClInclude Include="MainTester.h" />
     <ClInclude Include="main\Main.h" />
+    <ClInclude Include="MasterRenderer.h" />
+    <ClInclude Include="Math.h" />
+    <ClInclude Include="Mouse.h" />
     <ClInclude Include="PlayerShader.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="ShaderScript.h" />
     <ClInclude Include="TerrainShader.h" />
     <ClInclude Include="utility\common.hpp" />

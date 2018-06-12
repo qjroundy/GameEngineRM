@@ -4,53 +4,54 @@
 #define __DISPLAY_H
 #include "utility/common.hpp"
 
-namespace DisplayM
-{
-	class _Display
+namespace GameEngineM {
+	namespace DisplayM
 	{
-	private:
-		GLint _width = 0;
-		GLint _height = 0;
-		GLint _fpsLimit = 15;
-		GLFWwindow* _window;
+		class _Display
+		{
+		private:
+			GLint _width = 0;
+			GLint _height = 0;
+			GLint _fpsLimit = 15;
+			GLFWwindow* _window;
 
-		long _lastFrameTime = 0;
-		float _delta = .02f;
-		bool _isShown = false;
-		bool _shouldClose = false;
+			long _lastFrameTime = 0;
+			float _delta = .02f;
+			bool _isShown = false;
+			bool _shouldClose = false;
 
-	protected:
+		protected:
 
-	public:
-		_Display(_Display const&) = delete; // No reference copy
-		void operator=(_Display const&) = delete; // Reference assign
+		public:
+			_Display(_Display const&) = delete; // No reference copy
+			void operator=(_Display const&) = delete; // Reference assign
 
-		void createDisplay();
-		void showDisplay();
-		void hideDisplay();
-		void closeDisplay();
-		void updateDisplay();
+			void createDisplay();
+			void showDisplay();
+			void hideDisplay();
+			void closeDisplay();
+			void updateDisplay();
 
-		void resize(int width, int height);
+			void resize(int width, int height);
 
-		~_Display();
+			~_Display();
 
-		inline  GLint getWidth() noexcept{ return _width; }
-		inline  GLint getHeight() noexcept{ return _height; }
-		inline  GLint getFPSlimit() noexcept{ return _fpsLimit; }
-		inline  GLFWwindow* getWindow() noexcept { return _window; }
-		bool shouldClose() const;
+			inline  GLint getWidth() noexcept { return _width; }
+			inline  GLint getHeight() noexcept { return _height; }
+			inline  GLint getFPSlimit() noexcept { return _fpsLimit; }
+			inline  GLFWwindow* getWindow() noexcept { return _window; }
+			bool shouldClose() const;
 
-		void init();
-		static _Display& getInstance();
+			void init();
+			static _Display& getInstance();
 
-	private:
-		_Display();
-		static void framebufferResize_callBack(GLFWwindow* window, int width, int height);
-	};
-	static DisplayM::_Display& Display = DisplayM::_Display::getInstance();
+		private:
+			_Display();
+			static void framebufferResize_callBack(GLFWwindow* window, int width, int height);
+		};
+		static DisplayM::_Display& Display = DisplayM::_Display::getInstance();
+	}
 }
-
 
 #endif /* __DISPLAY_H */
 

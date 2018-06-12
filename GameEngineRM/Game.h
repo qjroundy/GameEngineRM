@@ -4,11 +4,14 @@
 
 namespace GameEngineM
 {
-	class Game
-	{
-	public:
-		Game();
-		~Game();
-	};
+	namespace GameM {
+
+		class Game
+		{
+		public:
+			Game();
+			~Game();
+		};
+	}
 }
 #endif /* __GAME_H_ */

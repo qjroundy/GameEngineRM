@@ -1,13 +1,12 @@
 #include "Game.h"
 
-namespace GameEngineM {
+using namespace GameEngineM::GameM;
 
-	Game::Game()
-	{
-	}
+Game::Game()
+{
+}
 
 
-	Game::~Game()
-	{
-	}
+Game::~Game()
+{
 }

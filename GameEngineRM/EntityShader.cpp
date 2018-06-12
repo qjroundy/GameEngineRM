@@ -1,12 +1,7 @@
 #include "EntityShader.h"
 
-namespace GameEngineM
-{
-	namespace ShaderM
-	{
+using namespace GameEngineM::ShaderM;
 
-		EntityShader::~EntityShader()
-		{
-		}
-	}
+EntityShader::~EntityShader()
+{
 }

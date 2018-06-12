@@ -5,12 +5,11 @@
 #include "IShaderProgram.h"
 #include "GameEngine.h"
 #include "Display.h"
+#include "ShaderProgram.h"
 
 using namespace GameEngineM;
 using namespace DisplayM;
 using namespace ShaderM;
-
-
 
 int main(int argc, char ** argv)
 {
@@ -20,13 +19,11 @@ int main(int argc, char ** argv)
 	debugMessage("Loading Settings");
 	GameEngine.LoadSettings();
 
-
 	// Splash screen stop......
 
 	debugMessage("Starting Engine");
 	GameEngine.Init();
 	
-
 	debugMessage("Creating Game...");
 	auto game = GameEngine.CreateGame();
 
@@ -38,7 +35,7 @@ int main(int argc, char ** argv)
 
 	// Can we load shaders on a thread and just wait for all to finish loading? parralelle loading ?
 	//ShaderM::setDefaultShaderPath("res/);
-	IShaderProgram shaderProgram( {"vertexShader.glsl", GL_VERTEX_SHADER}, {"fragmentShader.glsl",GL_FRAGMENT_SHADER} );
+	ShaderProgram shaderProgram( {"vertexShader.glsl", GL_VERTEX_SHADER}, {"fragmentShader.glsl",GL_FRAGMENT_SHADER} );
 
 #ifndef AUTOBUILD_SHADERS
 	shaderProgram[GL_VERTEX_SHADER].loadSourceShader();
@@ -48,22 +45,30 @@ int main(int argc, char ** argv)
 	shaderProgram[GL_FRAGMENT_SHADER].loadSourceShader();
 	shaderProgram[GL_FRAGMENT_SHADER].compileShader();
 	shaderProgram[GL_FRAGMENT_SHADER].logErrors();
-	shaderProgram.buildProgram();
+
+	shaderProgram.addAttribute(0, "position");
+	shaderProgram.addAttribute(1, "textureCoords");
+	shaderProgram.addAttribute(2, "normal");
+
+	shaderProgram.addUniformName("transformationMatrix");
+	shaderProgram.addUniformName("projectionMatrix");
+
+	shaderProgram.load();
+	cout << shaderProgram.getUniformLocation("transformationMatrix") << nl;
 #endif
-	shaderProgram.start();
 
 	debugMessage("Starting main loop");
 	//game.startGameLoop();   // Thread?
 	while (!Display.shouldClose())
 	{
+		shaderProgram.start();
 		glClear(GL_CLEAR_BUFFER);
 
 		glfwPollEvents();
-
-
+		
+		shaderProgram.stop();
 		glfwSwapBuffers(Display.getWindow());
 	}
-	
 
 	debugMessage("Terminating GLFW system...");
 	glfwTerminate();

@@ -16,7 +16,7 @@
 			GLFW_INIT_FAILED = -5
 		};
 
-
+		
 		class _GameEngine
 		{
 		private:
@@ -33,7 +33,7 @@
 			void Init(int, char**);
 
 			void LoadSettings();
-			Game CreateGame();
+			GameM::Game CreateGame();
 
 			static _GameEngine& getInstance();
 		};

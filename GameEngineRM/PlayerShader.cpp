@@ -1,12 +1,7 @@
 #include "PlayerShader.h"
 
-namespace GameEngineM
-{
-	namespace ShaderM
-	{
-		PlayerShader::~PlayerShader()
-		{
-		}
+using namespace GameEngineM::ShaderM;
 
-	}
+PlayerShader::~PlayerShader()
+{
 }

@@ -1,6 +1,7 @@
 #pragma once
 #ifndef _COMMON_H
 #define _COMMON_H
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <gl/glew.h>
@@ -34,7 +35,6 @@ static ofstream __LOGFILE__;
 #define CARRIAGE_RETURN			 "\r"
 
 inline ostream& nl(ostream& o) { return o << NEWLINE; }
-//inline fstream& nl(fstream& o) { return o << std::endl; }
 
 using std::chrono::system_clock;
 
