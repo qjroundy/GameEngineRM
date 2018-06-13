@@ -35,11 +35,11 @@ namespace GameEngineM {
 
 		~_Display();
 
-		inline  GLint getWidth() noexcept { return _width; }
-		inline  GLint getHeight() noexcept { return _height; }
-		inline  GLint getFPSlimit() noexcept { return _fpsLimit; }
-		inline  GLFWwindow* getWindow() noexcept { return _window; }
-		bool shouldClose() const;
+		inline  GLint		getWidth()		 { return _width; }
+		inline  GLint		getHeight()		 { return _height; }
+		inline  GLint		getFPSlimit()	 { return _fpsLimit; }
+		inline  GLFWwindow*	getWindow()		 { return _window; }
+		bool				shouldClose() const;
 
 		void init();
 		static _Display& getInstance();
@@ -48,7 +48,10 @@ namespace GameEngineM {
 		_Display();
 		static void framebufferResize_callBack(GLFWwindow* window, int width, int height);
 	};
-	static _Display& Display = _Display::getInstance();
+
+	//static unique_ptr<_Display> display{ &_Display::getInstance() };
+	//static shared_ptr<_Display> display{ &_Display::getInstance() };
+	static _Display* display = &_Display::getInstance();
 }
 
 #endif /* __DISPLAY_H */

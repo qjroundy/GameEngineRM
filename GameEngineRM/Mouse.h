@@ -41,7 +41,7 @@ namespace GameEngineM
 
 		Mouse()
 		{
-			this->_window = Display.getWindow();
+			this->_window = display->getWindow();
 			init();
 		}
 
@@ -112,8 +112,8 @@ namespace GameEngineM
 			GLFWmousebuttonfun	buttonCB = &Mouse::MouseButtonCB;
 			GLFWscrollfun		scrollCB = &Mouse::MouseScrollCB;
 
-			_xPos = (GLfloat)Display.getWidth() / 2;
-			_yPos = (GLfloat)Display.getHeight() / 2;
+			_xPos = (GLfloat)display->getWidth() / 2;
+			_yPos = (GLfloat)display->getHeight() / 2;
 			_dy = 0;
 			_dx = 0;
 			_yscroll = 0;
@@ -124,9 +124,9 @@ namespace GameEngineM
 			_xscrollDirection = XDirection::SCROLL_TARE;
 			_yscrollDirection = YDirection::SCROLL_TARE;
 
-			glfwSetCursorPosCallback(Display.getWindow(), moveCB);
-			glfwSetMouseButtonCallback(Display.getWindow(), buttonCB);
-			glfwSetScrollCallback(Display.getWindow(), scrollCB);
+			glfwSetCursorPosCallback(display->getWindow(), moveCB);
+			glfwSetMouseButtonCallback(display->getWindow(), buttonCB);
+			glfwSetScrollCallback(display->getWindow(), scrollCB);
 
 		}
 

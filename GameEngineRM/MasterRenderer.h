@@ -12,12 +12,12 @@ namespace GameEngineM
 
 		//:public IRenderer
 	{
-		vector<Renderer> _renderers;
+		vector<IRenderer*> _renderers;
 	public:
 		MasterRenderer() = default;
 		MasterRenderer(vector<Renderer> renderers);
 
-		void attachRenderer(Renderer renderer);
+		void attachRenderer(IRenderer* renderer);
 		void detachRenderer(Renderer renderer);
 
 		~MasterRenderer();

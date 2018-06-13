@@ -15,7 +15,7 @@ namespace GameEngineM
 		void init() override {};
 		void render() override {};
 
-		Renderer() = delete;
+		Renderer()=default;
 		Renderer(ShaderProgram shaderProgram);
 		~Renderer();
 	};

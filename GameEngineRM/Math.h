@@ -17,7 +17,7 @@ namespace GameEngineM
 
 	GLfloat barryCentric(vec3 p1, vec3 p2, vec3 p3, vec2 pos);
 
-	//		mat4* createViewMatrix(Camera camera);
+	//mat4* createViewMatrix(Camera camera);
 
 	class Math
 	{

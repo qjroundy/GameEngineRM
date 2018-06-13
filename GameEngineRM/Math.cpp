@@ -2,7 +2,7 @@
 
 using namespace GameEngineM;
 
-mat4 createTransformationMatrix(
+mat4 GameEngineM::createTransformationMatrix(
 	vec3 translation,
 	GLfloat rx,
 	GLfloat ry,
@@ -21,7 +21,7 @@ mat4 createTransformationMatrix(
 	return matrix;
 }
 
-//mat4* createViewMatrix(Camera camera)
+//mat4* GameEngineM::createViewMatrix(Camera camera)
 //{
 //	mat4* matrix = new mat4{ 1 };
 
@@ -36,7 +36,7 @@ mat4 createTransformationMatrix(
 //	return matrix;
 //}
 
-GLfloat barryCentric(vec3 p1, vec3 p2, vec3 p3, vec2 pos)
+GLfloat GameEngineM::barryCentric(vec3 p1, vec3 p2, vec3 p3, vec2 pos)
 {
 	float det = (p2.z - p3.z) * (p1.x - p3.x) + (p3.x - p2.x) * (p1.z - p3.z);
 	float l1 = ((p2.z - p3.z) * (pos.x - p3.x) + (p3.x - p2.x) * (pos.y - p3.z)) / det;

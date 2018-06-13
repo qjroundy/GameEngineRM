@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\soil.1.16.0\build\native\soil.props" Condition="Exists('..\packages\soil.1.16.0\build\native\soil.props')" />
   <Import Project="..\packages\GLMathematics.0.9.5.4\build\native\GLMathematics.props" Condition="Exists('..\packages\GLMathematics.0.9.5.4\build\native\GLMathematics.props')" />
@@ -143,19 +143,30 @@
     <ClCompile Include="EntityShader.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="GUIRenderer.cpp" />
     <ClCompile Include="IEntity.cpp" />
+    <ClCompile Include="IMesh.cpp" />
+    <ClCompile Include="IModel.cpp" />
     <ClCompile Include="IRenderer.cpp" />
     <ClCompile Include="IShaderProgram.cpp" />
     <ClCompile Include="IShaderScript.cpp" />
+    <ClCompile Include="ITerrain.cpp" />
+    <ClCompile Include="ITexture.cpp" />
     <ClCompile Include="MainTester.cpp" />
     <ClCompile Include="MasterRenderer.cpp" />
     <ClCompile Include="Math.cpp" />
+    <ClCompile Include="ModelMesh.cpp" />
+    <ClCompile Include="ModelTexture.cpp" />
+    <ClCompile Include="ModelTexturedMesh.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="PlayerShader.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="ShaderScript.cpp" />
+    <ClCompile Include="TerrainMesh.cpp" />
     <ClCompile Include="TerrainShader.cpp" />
+    <ClCompile Include="TerrainTexture.cpp" />
+    <ClCompile Include="TerrainTexturedMesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h" />
@@ -164,21 +175,39 @@
     <ClInclude Include="EntityShader.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameEngine.h" />
+    <ClInclude Include="GUIRenderer.h" />
     <ClInclude Include="IEntity.h" />
+    <ClInclude Include="IMesh.h" />
+    <ClInclude Include="IModel.h" />
     <ClInclude Include="IRenderer.h" />
     <ClInclude Include="IShaderProgram.h" />
     <ClInclude Include="IShaderScript.h" />
+    <ClInclude Include="ITerrain.h" />
+    <ClInclude Include="ITexture.h" />
     <ClInclude Include="MainTester.h" />
     <ClInclude Include="main\Main.h" />
     <ClInclude Include="MasterRenderer.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="ModelMesh.h" />
+    <ClInclude Include="ModelTexture.h" />
+    <ClInclude Include="ModelTexturedMesh.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="PlayerShader.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="ShaderScript.h" />
+    <ClInclude Include="TerrainMesh.h" />
     <ClInclude Include="TerrainShader.h" />
+    <ClInclude Include="TerrainTexture.h" />
+    <ClInclude Include="TerrainTexturedMesh.h" />
     <ClInclude Include="utility\common.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

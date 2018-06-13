@@ -31,7 +31,7 @@ namespace GameEngineM
 
 		IShaderProgram(std::map<GLenum, ShaderScript> shaders);
 		void buildProgram();
-		IShaderProgram() = delete;
+		IShaderProgram() = default;
 		IShaderProgram(ShaderScript vertexShader, ShaderScript fragmentShader);
 		~IShaderProgram();
 

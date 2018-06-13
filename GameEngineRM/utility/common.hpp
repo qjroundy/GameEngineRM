@@ -74,5 +74,5 @@ inline ostream& TimeStamp(ostream& o)
 //
 //template <typedef ...T>
 
-#endif /* COMMON_HPP */
 
+#endif /* COMMON_HPP */

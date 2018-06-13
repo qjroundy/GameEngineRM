@@ -2,7 +2,7 @@
 
 using namespace GameEngineM;
 
-void MasterRenderer::attachRenderer(Renderer renderer)
+void MasterRenderer::attachRenderer(IRenderer* renderer)
 {
 	_renderers.push_back(renderer);
 }

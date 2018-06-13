@@ -20,7 +20,7 @@ namespace GameEngineM {
 			debugError("GLFW failed to initialize....", GLFW_INIT_FAILED);
 		}
 
-		Display.init();
+		display->init();
 
 		debugMessage("Initializing GLEW");
 		glewExperimental = GL_TRUE;
@@ -44,7 +44,7 @@ namespace GameEngineM {
 			debugError("GLFW failed to initialize....", GLFW_INIT_FAILED);
 		}
 
-		Display.init();
+		display->init();
 			
 		debugMessage("Initializing GLEW");
 		glewExperimental = GL_TRUE;

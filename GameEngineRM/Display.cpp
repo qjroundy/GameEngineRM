@@ -22,6 +22,9 @@ void _Display::init()
 
 void _Display::createDisplay()
 {
+	// Check OS then use each OS method for creating window/context. Start early.
+
+
 	debugMessage("Creating Display");
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);

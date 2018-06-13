@@ -2,12 +2,16 @@
 #ifndef __DEBUG_H_
 #define __DEBUG_H_
 
-class Debug
+namespace GameEngineM
 {
-public:
-	Debug();
-	~Debug();
-};
 
+	class Debug
+	{
+	public:
+		Debug();
+		~Debug();
+	};
+
+}
 #endif /* __DEBUG_H_ */
 
