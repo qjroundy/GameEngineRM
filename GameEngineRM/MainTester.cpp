@@ -90,7 +90,7 @@ int main(int argc, char ** argv)
 		glfwPollEvents();
 		
 		//masterRenderer.stop();
-		glfwSwapBuffers(display->getWindow());
+		glfwSwapBuffers(display->window());
 	}
 
 	debugMessage("Terminating GLFW system...");

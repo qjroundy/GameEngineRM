@@ -6,7 +6,7 @@ _Display::_Display()
 {
 }
 
-bool _Display::shouldClose() const
+ bool _Display::shouldClose()
 {
 	return (_shouldClose || (bool)glfwWindowShouldClose(_window))? true : false;
 }
@@ -35,14 +35,15 @@ void _Display::createDisplay()
 #endif
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	_window = glfwCreateWindow(1280, 720, "Test Window", NULL, NULL);
+	_window = move(glfwCreateWindow(1280, 720, "Test Window", NULL, NULL));
+	
 	if (!_window)
 	{
 		wcout << L"Window failed to create" << endl;
 	}
 
 	glfwSetFramebufferSizeCallback(_window, framebufferResize_callBack);
-	glfwGetFramebufferSize(_window, &_width, &_height);
+	glfwGetFramebufferSize(_window, &width, &height);
 }
 
 void _Display::showDisplay()

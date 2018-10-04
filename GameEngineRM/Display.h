@@ -9,22 +9,17 @@ namespace GameEngineM {
 	class _Display
 	{
 	private:
-		GLint _width = 0;
-		GLint _height = 0;
+		GLFWwindow * _window;
 		GLint _fpsLimit = 15;
-		GLFWwindow* _window;
-
 		long _lastFrameTime = 0;
 		float _delta = .02f;
 		bool _isShown = false;
 		bool _shouldClose = false;
-
 	protected:
 
 	public:
 		_Display(_Display const&) = delete; // No reference copy
 		void operator=(_Display const&) = delete; // Reference assign
-
 		void createDisplay();
 		void showDisplay();
 		void hideDisplay();
@@ -35,11 +30,14 @@ namespace GameEngineM {
 
 		~_Display();
 
-		inline  GLint		getWidth()		 { return _width; }
-		inline  GLint		getHeight()		 { return _height; }
-		inline  GLint		getFPSlimit()	 { return _fpsLimit; }
-		inline  GLFWwindow*	getWindow()		 { return _window; }
-		bool				shouldClose() const;
+		GLint width = 0;
+		GLint height = 0;
+		inline GLFWwindow * const window()   { return _window; }
+		bool shouldClose();
+		inline const bool isShown() const  { return _isShown; }
+
+		inline  const GLint	FPSlimit() const { return _fpsLimit; }
+		//inline  GLFWwindow*	getWindow()		 { return _window; }
 
 		void init();
 		static _Display& getInstance();
