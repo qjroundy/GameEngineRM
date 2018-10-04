@@ -42,3 +42,13 @@ void ShaderProgram::bindAttributes()
 		bindAttribute(a.first, a.second);
 	}
 }
+
+void ShaderProgram::addUnifrom(string name)
+{
+	_uniforms_locations.insert(make_pair(name, 0));
+}
+
+void ShaderProgram::addUniformName(string name)
+{
+	_uniforms_locations[name] = 0;
+}

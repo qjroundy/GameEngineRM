@@ -22,10 +22,7 @@ IShaderProgram::IShaderProgram(ShaderScript vertexShader, ShaderScript fragmentS
 	buildProgram();
 #endif
 }
-void IShaderProgram::addUnifrom(string name)
-{
-	_uniforms_locations.insert(make_pair(name, 0));
-}
+
 IShaderProgram::IShaderProgram(std::map<GLenum,ShaderScript> shaders)
 	: _programId(glCreateProgram())
 {
@@ -195,7 +192,3 @@ void loadMatrix(GLuint location, glm::mat4 value)
 	glUniformMatrix4fv(location, 1, GL_FALSE, &value[0][0]);
 }
 
-void IShaderProgram::addUniformName(string name)
-{
-	_uniforms_locations[name] = 0;
-}

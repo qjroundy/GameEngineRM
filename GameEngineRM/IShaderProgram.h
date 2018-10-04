@@ -10,32 +10,44 @@ namespace GameEngineM
 	class IShaderProgram
 	{
 	private:
-		ShaderScript _vertexShader{};
-		ShaderScript _fragmentShader{};
+		map<GLenum, ShaderScript> _shaders;
 
 
 	protected:
-		map<GLenum, ShaderScript> _shaders;
-		map<string, GLint> _uniforms_locations;
 		GLuint _programId;
 	public:
 		virtual void bindAttributes() = 0;
 		virtual void getAllUniformLocations() = 0;
 		virtual void addAttribute(string attribName) = 0;
 		virtual void addAttribute(GLuint idx, string attribName) = 0;
-		GLuint getUniformLocation(string uniformName);
-		void generateShaderProgram();
+		virtual GLuint getUniformLocation(string uniformName);
+		virtual void generateShaderProgram();
 		inline const  GLuint programId() { return _programId; }
-		void load();
-		void addUnifrom(string name);
+		
+		virtual void load();
+		virtual void addUnifrom(string name) = 0;
+
+
+		virtual void loadUniform(GLuint location, GLboolean value)=0;
+		virtual void loadUniform(string name, GLfloat value)	  =0;
+		virtual void loadUniform(string name, GLint value)		  =0;
+		virtual void loadUniform(string name, GLboolean value)	  =0;
+		virtual void loadUniform(string name, vec3 value)		  =0;
+		virtual void loadUniform(string name, vec4 value)		  =0;
+		virtual void loadUniform(string name, mat4 value)		  =0;
+		virtual void loadUniform(GLuint location, GLfloat value)  =0;
+		virtual void loadUniform(GLuint location, GLint value)	  =0;
+		virtual void loadUniform(GLuint location, vec3 value)	  =0;
+		virtual void loadUniform(GLuint location, vec4 value)	  =0;
+		virtual void loadUniform(GLuint location, mat4 value)	  =0;
 
 		IShaderProgram(std::map<GLenum, ShaderScript> shaders);
-		void buildProgram();
+		virtual void buildProgram();
 		IShaderProgram() = default;
 		IShaderProgram(ShaderScript vertexShader, ShaderScript fragmentShader);
 		~IShaderProgram();
 
-		ShaderScript& operator[](GLenum type);
+		virtual ShaderScript& operator[](GLenum type);
 
 		template<GLenum T> ShaderScript& getShaderScript();
 		template<GLenum T> void attachShader(ShaderScript);
@@ -54,19 +66,9 @@ namespace GameEngineM
 		template<typename T> void updateUniform(GLuint location, T value) { loadUniform(location, value); };
 		template<typename T> void updateUniform(string name, T value) { loadUniform(name, value); };
 
-		void loadUniform(GLuint location, GLfloat value) { loadFloat(location, value); };
-		void loadUniform(GLuint location, GLint value) { loadInt(location, value); };
-		void loadUniform(GLuint location, GLboolean value) { loadInt(location, value); };
-		void loadUniform(GLuint location, vec3 value) { loadVector3f(location, value); };
-		void loadUniform(GLuint location, vec4 value) { loadVector4f(location, value); };
-		void loadUniform(GLuint location, mat4 value) { loadMatrix4f(location, value); };
 
-		void loadUniform(string name, GLfloat value) { loadUniform(_uniforms_locations[name], value); };
-		void loadUniform(string name, GLint value) { loadUniform(_uniforms_locations[name], value); };
-		void loadUniform(string name, GLboolean value) { loadUniform(_uniforms_locations[name], value); };
-		void loadUniform(string name, vec3 value) { loadUniform(_uniforms_locations[name], value); };
-		void loadUniform(string name, vec4 value) { loadUniform(_uniforms_locations[name], value); };
-		void loadUniform(string name, mat4 value) { loadUniform(_uniforms_locations[name], value); };
+
+
 
 		void loadFloat(GLuint location, GLfloat value);
 		void loadInt(GLuint location, GLint value);
