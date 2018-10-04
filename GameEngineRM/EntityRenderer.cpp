@@ -14,7 +14,8 @@ void GameEngineM::EntityRenderer::addEntities(vector<IEntity*> entities)
 }
 
 EntityRenderer::EntityRenderer()
-	: Renderer({ {"entityVertexShader.glsl", GL_VERTEX_SHADER}, {"entityFragmentShader.glsl", GL_FRAGMENT_SHADER} })
+	//: Renderer({ {"entityVertexShader.glsl", GL_VERTEX_SHADER}, {"entityFragmentShader.glsl", GL_FRAGMENT_SHADER} })
+	: Renderer()
 {
 }
 

@@ -25,7 +25,7 @@ namespace GameEngineM
 		virtual void addAttribute(GLuint idx, string attribName) = 0;
 		GLuint getUniformLocation(string uniformName);
 		void generateShaderProgram();
-
+		inline const  GLuint programId() { return _programId; }
 		void load();
 		void addUnifrom(string name);
 

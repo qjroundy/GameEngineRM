@@ -8,12 +8,9 @@ namespace GameEngineM
 {
 	class IRenderer
 	{
-	protected:
-		ShaderProgram _shaderProgram;
 
 	public:
 		IRenderer() = default;
-		IRenderer(ShaderProgram shaderProgram);
 		~IRenderer();
 
 		virtual void init() = 0;
@@ -22,7 +19,9 @@ namespace GameEngineM
 		virtual void stop() = 0;
 		virtual void cleanup();
 
-		void changeShaderProgram(ShaderProgram shaderProgram);
+		virtual void setShaderProgram(unique_ptr<IShaderProgram> shaderProgram) = 0;
+		virtual const IShaderProgram& getShaderProgram(void) = 0;
+		virtual void changeShaderProgram(unique_ptr<IShaderProgram> shaderProgram) = 0;
 	};
 }
 #endif /* __I_RENDERER_H */
