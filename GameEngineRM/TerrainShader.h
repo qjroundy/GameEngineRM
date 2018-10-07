@@ -2,11 +2,12 @@
 #ifndef __SHADER_SCRIPT_H_
 #define __SHADER_SCRIPT_H_
 
-#include "IShaderProgram.h"
+#include "ShaderProgram.h"
+
 namespace GameEngineM
 {
 	class TerrainShader :
-		public IShaderProgram
+		public ShaderProgram
 	{
 	public:
 		TerrainShader() = delete;

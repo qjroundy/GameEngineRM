@@ -9,28 +9,21 @@ namespace GameEngineM
 	{
 	private:
 	protected:
-		bool _isCompiled = false;
-		bool _isLoaded = false;
-		bool _isTypeKnown = false;
-		bool _isSaved = false;
-		GLuint _shaderId = 0;
-		GLchar * _shaderData{};
-		string _shaderPath = "";
-		GLenum _shaderType = 0;
+		//bool _isCompiled = false;
+		
 
 		string readFile(string path);
 	public:
 		IShaderScript() = default;
 
-		inline bool getShaderId() { return _shaderId; }
-		inline bool isCompiled() { return _isCompiled; }
-		inline bool isTypeKnown() { return _isTypeKnown; }
-		inline bool isLoaded() { return _isLoaded; }
-		inline bool isSaved() { return _isSaved; }
-		template<GLenum T>
-		IShaderScript(string path);
+		inline virtual const bool isCompiled() = 0;
+		inline virtual const bool isLoaded() = 0;
+		inline virtual const bool isTypeKnown() = 0;
+		inline virtual const bool isSaved() = 0;
+		inline virtual const GLuint shaderId() = 0;
+		inline virtual const GLuint getShaderId() = 0;
 
-		IShaderScript(string path, GLenum type);
+
 
 		void cleanUp();
 		string readFile();

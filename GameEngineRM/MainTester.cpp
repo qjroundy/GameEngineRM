@@ -38,29 +38,32 @@ int main(int argc, char ** argv)
 
 	// Can we load shaders on a thread and just wait for all to finish loading? parralelle loading ?
 	//ShaderM::setDefaultShaderPath("res/);
-	ShaderProgram shaderProgram( {"vertexShader.glsl", GL_VERTEX_SHADER}, {"fragmentShader.glsl",GL_FRAGMENT_SHADER} );
-
+	IShaderProgram* shaderProgram = new ShaderProgram;
 
 	// This can be put into a class and done in init() call to that class....
 #ifndef AUTOBUILD_SHADERS
-	shaderProgram[GL_VERTEX_SHADER].loadSourceShader();
-	shaderProgram[GL_VERTEX_SHADER].compileShader();
-	shaderProgram[GL_VERTEX_SHADER].logErrors();
+	IShaderScript * shaderScript = new ShaderScript("scripts/vertexShader.glsl", GL_VERTEX_SHADER);
+	shaderScript->loadSourceShader();
+	shaderScript->compileShader();
+	shaderScript->logErrors();
+	shaderProgram->attachShader(shaderScript, GL_VERTEX_SHADER);	
 
-	shaderProgram[GL_FRAGMENT_SHADER].loadSourceShader();
-	shaderProgram[GL_FRAGMENT_SHADER].compileShader();
-	shaderProgram[GL_FRAGMENT_SHADER].logErrors();
+	shaderScript = new ShaderScript("scripts/fragmentShader.glsl", GL_FRAGMENT_SHADER);
+	shaderScript->loadSourceShader();
+	shaderScript->compileShader();
+	shaderScript->logErrors();
+	shaderProgram->attachShader(shaderScript, GL_FRAGMENT_SHADER);
+	
+	shaderProgram->addAttribute(0, "position");
+	shaderProgram->addAttribute(1, "textureCoords");
+	shaderProgram->addAttribute(2, "normal");
 
-	shaderProgram.addAttribute(0, "position");
-	shaderProgram.addAttribute(1, "textureCoords");
-	shaderProgram.addAttribute(2, "normal");
+	shaderProgram->addUniformName("transformationMatrix");
+	//shaderProgram->addUniformName("projectionMatrix");
 
-	shaderProgram.addUniformName("transformationMatrix");
-	shaderProgram.addUniformName("projectionMatrix");
-
-	cout << shaderProgram.getUniformLocation("transformationMatrix") << nl;
-	shaderProgram.load();
-	cout << shaderProgram.getUniformLocation("transformationMatrix") << nl;
+	std::cout << shaderProgram->getUniformLocation("transformationMatrix") << nl;
+	shaderProgram->load();
+	std::cout << shaderProgram->getUniformLocation("transformationMatrix") << nl;
 #endif
 
 	// create Master renderer

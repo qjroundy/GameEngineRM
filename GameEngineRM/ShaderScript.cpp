@@ -7,6 +7,7 @@ using namespace GameEngineM;
 
 void ShaderScript::compileShader()
 {
+	
 	if (!_isCompiled)
 	{
 		debugMessage("Compiling shader.");
@@ -75,16 +76,43 @@ void ShaderScript::logErrors()
 
 template<GLenum T>
 ShaderScript::ShaderScript(string pathToSource)
-	: IShaderScript(pathToSource)
+	: ShaderScript(pathToSource,T)
 {
 }
 
 ShaderScript::ShaderScript(string path, GLenum type)
-	: IShaderScript(path,type)
 {
+	_shaderType = type;
+	_shaderPath = path;
 
 }
 
 ShaderScript::~ShaderScript()
 {
+}
+
+string ShaderScript::readFile()
+{
+	return readFile(_shaderPath);
+}
+
+string ShaderScript::readFile(string path)
+{
+	string content;
+	ifstream fileStream{ path, ios::in };
+
+	if (!fileStream.is_open()) {
+		cerr << "Could not read file " << path << ". File does not exist." << nl;
+	}
+
+	string line = "";
+
+	while (!fileStream.eof()) {
+		getline(fileStream, line);
+		content.append(line + "\n");
+	}
+
+	fileStream.close();
+	_isLoaded = true;
+	return content;
 }

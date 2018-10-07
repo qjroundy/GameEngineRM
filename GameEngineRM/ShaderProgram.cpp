@@ -2,18 +2,22 @@
 
 using namespace GameEngineM;
 
-ShaderProgram::ShaderProgram(ShaderScript vertexShader, ShaderScript fragmentShader)
-	: IShaderProgram(vertexShader,fragmentShader)
+ShaderProgram::ShaderProgram(IShaderScript * vertexShader, IShaderScript * fragmentShader)
+	: _programId(glCreateProgram())
 {
+	_shaders.insert_or_assign(GL_VERTEX_SHADER, vertexShader);
+	_shaders.insert_or_assign(GL_FRAGMENT_SHADER, fragmentShader);
 }
 
-ShaderProgram::ShaderProgram(map<GLenum, ShaderScript> shaders)
-	: IShaderProgram(shaders)
+ShaderProgram::ShaderProgram(map<GLenum, IShaderScript*> shaders)
+	:  _programId(glCreateProgram()), _shaders(shaders)
 {
+
 }
 
 ShaderProgram::~ShaderProgram()
 {
+	glDeleteProgram(_programId);
 }
 
 void ShaderProgram::addAttribute(GLuint idx, string attribName)
@@ -43,12 +47,180 @@ void ShaderProgram::bindAttributes()
 	}
 }
 
-void ShaderProgram::addUnifrom(string name)
+void ShaderProgram::addUniform(string name)
 {
 	_uniforms_locations.insert(make_pair(name, 0));
 }
 
 void ShaderProgram::addUniformName(string name)
 {
-	_uniforms_locations[name] = 0;
+	_uniforms_locations.insert_or_assign(name, 0);
+//	_uniforms_locations[name] = 0;
 }
+
+
+//[[DEPRECIATED("Using attachShader(IShaderScript*) instead.")]]
+//ShaderProgram::ShaderProgram(map<GLenum, IShaderScript*> shaders)
+//{
+//	_programId = glCreateProgram();
+//	//std::copy(shaders.begin(), shaders.end(), _shaders.begin())
+//}
+
+void ShaderProgram::generateShaderProgram()
+{
+	for (auto s : _shaders)
+	{
+		
+		glAttachShader(_programId, s.second->getShaderId());
+	}
+}
+
+void ShaderProgram::bindAttribute(GLuint attribute, string variableName)
+{
+	glBindAttribLocation(_programId, attribute, variableName.c_str());
+}
+
+void ShaderProgram::load()
+{
+	debugInfo("Loading Shader");
+	generateShaderProgram();
+	bindAttributes();
+	buildProgram();
+	getAllUniformLocations();
+	debugInfo("Shader Loaded");
+
+}
+void ShaderProgram::buildProgram()
+{
+
+	glProgramParameteri(_programId, GL_PROGRAM_BINARY_RETRIEVABLE_HINT, GL_TRUE);
+	glLinkProgram(_programId);
+	glValidateProgram(_programId);
+
+	GLint binaryLength = 0;
+	glGetProgramiv(_programId, GL_PROGRAM_BINARY_LENGTH, &binaryLength);
+	if (binaryLength > 0)
+	{
+
+		GLint formats = 0;
+
+		glGetIntegerv(GL_NUM_PROGRAM_BINARY_FORMATS, &formats);
+		GLint* binaryFormats = new GLint[formats];
+		glGetIntegerv(GL_PROGRAM_BINARY_FORMATS, binaryFormats);
+		u8 * binary = new u8[binaryLength];
+		glGetProgramBinary(_programId, binaryLength, NULL, (GLenum*)binaryFormats, binary);
+
+		FILE* fp = fopen(("shader_" + to_string(_programId) + ".bin").c_str(), "wb");
+		fwrite(binary, binaryLength, 1, fp);
+		fclose(fp);
+		delete binary;
+		debugInfo("Shader cached successfully");
+	}
+	else
+	{
+		debugLog("Shader failed to cache");
+	}
+
+}
+
+
+[[DEPRECATED("Use attachShader(IShaderScript* script) instead")]]
+void ShaderProgram::attachVertexShader(IShaderScript * vertexShader)
+{
+	_shaders[GL_VERTEX_SHADER] = vertexShader;
+}
+
+[[DEPRECATED("Use attachShader(IShaderScript* script) instead")]]
+void ShaderProgram::attachFragmentShader(IShaderScript * fragmentShader)
+{
+	_shaders[GL_FRAGMENT_SHADER] = fragmentShader;
+
+}
+
+[[DEPRECATED("Use attachShader(IShaderScript* script) instead")]]
+void ShaderProgram::attachGeometryShader(IShaderScript * geometryShader)
+{
+	_shaders[GL_GEOMETRY_SHADER] = geometryShader;
+}
+
+template<GLenum T>
+const IShaderScript& ShaderProgram::getShaderScript()
+{
+	return _shaders.at(T);
+}
+
+
+const IShaderScript& ShaderProgram::getShaderScript(GLenum type)
+{
+	return *_shaders.at(type);
+}
+
+const IShaderScript& ShaderProgram::operator[](GLenum type)
+{
+	return *_shaders[type];
+}
+
+void ShaderProgram::start()
+{
+	glUseProgram(_programId);
+}
+
+
+void ShaderProgram::stop()
+{
+	glUseProgram(0);
+}
+
+void ShaderProgram::cleanUp()
+{
+
+	for (auto s : _shaders)
+	{
+		glDetachShader(_programId, s.second->getShaderId());
+		s.second->cleanUp();
+	}
+
+	glDeleteProgram(_programId);
+
+}
+
+//template<GLenum T>
+//void ShaderProgram::attachShader(IShaderScript *shader)
+//{
+//	_shaders[T] = shader;
+//}
+
+void ShaderProgram::attachShader(IShaderScript *shader, GLenum shaderType)
+{
+	_shaders[shaderType] = shader;
+}
+
+GLuint ShaderProgram::getUniformLocation(string uniformName)
+{
+	return glGetUniformLocation(_programId, uniformName.c_str());
+}
+
+void load()
+{
+
+}
+
+void start()
+{
+
+}
+
+void stop()
+{
+
+}
+
+void cleanUp()
+{
+
+}
+
+//void ShaderProgram::addUniform(string name)
+//{
+//	addUniformName(name);
+//}
