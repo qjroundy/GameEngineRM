@@ -18,11 +18,13 @@ namespace GameEngineM
 		bool _isLoaded = false;
 		bool _isTypeKnown = false;
 		bool _isSaved = false;
+		GLenum _shaderType = 0;
 		GLuint _shaderId = 0;
 		GLchar * _shaderData{};
-		string _shaderPath = "";
-		GLenum _shaderType = 0;
-		string _shaderName; // USed for pretty output reasons...optional
+		string _shaderName{}; // Used for pretty output reasons...optional
+		string _shaderPath{};
+		string _hashName{};
+
 	public:
 		inline const bool isLoaded() override { return _isLoaded; }
 		inline const bool isCompiled() override { return _isCompiled; }
@@ -37,12 +39,51 @@ namespace GameEngineM
 		void loadSourceShader() override;
 		void loadBinShader() override;
 		void logErrors() override;
-		ShaderScript() = default;
 
 		template<GLenum T> ShaderScript(string path);
+
+		inline virtual void setName(string name) 
+		{
+			_shaderName = name;
+
+			getHashName();
+
+		}
+
+		inline virtual const string& getHashName()
+		{
+			unique_ptr<hash<string>> hasher{};
+
+			if (_hashName.empty())
+			{
+				if (_shaderName.empty())
+				{
+					
+					return _hashName = to_string((*hasher)(_shaderPath));
+				}
+				else
+				{
+					return _hashName = to_string((*hasher)(_shaderName));
+				}
+			}
+			
+			return _hashName;
+		}
+
+		inline virtual const string& getName() 
+		{
+			if (_shaderName.empty())
+			{
+				return _shaderPath;
+			}
+			else
+			{ 
+				return _shaderName; 
+			}
+		}
+
+		ShaderScript() = default;
 		ShaderScript(string path, GLenum type);
-		void setName(string name) { _shaderName = name; }
-		string getName() { return _shaderName; }
 		~ShaderScript();
 	};
 }

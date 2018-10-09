@@ -11,6 +11,9 @@
 #include "ModelTexture.h"
 #include "ModelTexturedMesh.h"
 #include "IEntity.h"
+#include "VertexShaderScript.h"
+#include "FragmentShaderScript.h"
+#include "PlayerShader.h"
 
 using namespace GameEngineM;
 
@@ -33,54 +36,55 @@ int main(int argc, char ** argv)
 	//debugMessage("Initializing ALUT");
 	//alutInit(&argc, argv);
 
-	//auto m = alcOpenDevice(NULL);
-	//auto c = alcCreateContext(m, NULL);
+	auto m = alcOpenDevice(NULL);
+	auto c = alcCreateContext(m, NULL);
 
 	// Can we load shaders on a thread and just wait for all to finish loading? parralelle loading ?
 	//ShaderM::setDefaultShaderPath("res/);
-	IShaderProgram* shaderProgram = new ShaderProgram;
+	unique_ptr<IShaderProgram> playerShaderProgram{ new PlayerShader() };
 
 	// This can be put into a class and done in init() call to that class....
 #ifndef AUTOBUILD_SHADERS
-	IShaderScript * shaderScript = new ShaderScript("scripts/vertexShader.glsl", GL_VERTEX_SHADER);
+	IShaderScript * shaderScript = new VertexShaderScript("scripts/vertexShader.glsl");
 	shaderScript->loadSourceShader();
 	shaderScript->compileShader();
 	shaderScript->logErrors();
-	shaderProgram->attachShader(shaderScript, GL_VERTEX_SHADER);	
+	playerShaderProgram->attachShader(shaderScript, GL_VERTEX_SHADER);
 
-	shaderScript = new ShaderScript("scripts/fragmentShader.glsl", GL_FRAGMENT_SHADER);
+	shaderScript = new FragmentShaderScript("scripts/fragmentShader.glsl");
 	shaderScript->loadSourceShader();
 	shaderScript->compileShader();
 	shaderScript->logErrors();
-	shaderProgram->attachShader(shaderScript, GL_FRAGMENT_SHADER);
-	
-	shaderProgram->addAttribute(0, "position");
-	shaderProgram->addAttribute(1, "textureCoords");
-	shaderProgram->addAttribute(2, "normal");
+	playerShaderProgram->attachShader(shaderScript, GL_FRAGMENT_SHADER);
 
-	shaderProgram->addUniformName("transformationMatrix");
-	//shaderProgram->addUniformName("projectionMatrix");
+	playerShaderProgram->addAttribute(0, "position");
+	playerShaderProgram->addAttribute(1, "textureCoords");
+	playerShaderProgram->addAttribute(2, "normal");
 
-	std::cout << shaderProgram->getUniformLocation("transformationMatrix") << nl;
-	shaderProgram->load();
-	std::cout << shaderProgram->getUniformLocation("transformationMatrix") << nl;
+	playerShaderProgram->addUniformName("transformationMatrix");
+	playerShaderProgram->addUniformName("projectionMatrix");
+
+	std::cout << playerShaderProgram->getUniformLocation("transformationMatrix") << nl;
+	playerShaderProgram->load();
+	std::cout << playerShaderProgram->getUniformLocation("transformationMatrix") << nl;
 #endif
-
+	
 	// create Master renderer
 	debugInfo("Creating master Renderer");
-	unique_ptr<MasterRenderer> masterRenderer(new MasterRenderer);
+	unique_ptr<MasterRenderer> masterRenderer(new MasterRenderer());
 
 	// create individual renderers and add render elements
 	debugInfo("Creating Entity Renderer");
-	EntityRenderer* entityRenderer = new EntityRenderer;
+	EntityRenderer* playerRenderer = new EntityRenderer();
 	debugInfo("adding entity");
+	playerRenderer->setShaderProgram(move(playerShaderProgram));
 
 	//entityRenderer->addEntities(new IEntity{ new ModelMesh, new ModelTexture });
 
 	// attach renderers to master
 	debugInfo("Attaching entity renderer to master renderer");
-	masterRenderer->attachRenderer(entityRenderer);
-
+	masterRenderer->attachRenderer(playerRenderer);
+	
 	debugMessage("Starting main loop");
 	//game.startGameLoop();   // Thread?
 	while (!display->shouldClose())
@@ -89,7 +93,7 @@ int main(int argc, char ** argv)
 
 		//masterRenderer.start();
 
-		//masterRenderer.render();
+		//masterRenderer->render();
 		glfwPollEvents();
 		
 		//masterRenderer.stop();

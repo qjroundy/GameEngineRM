@@ -2,6 +2,7 @@
 #include "Debug.h"
 #include <memory>
 #include <cstdarg>
+#include <filesystem>
 
 using namespace GameEngineM;
 
@@ -14,11 +15,26 @@ void ShaderScript::compileShader()
 				
 		glShaderSource(_shaderId, 1, (const_cast<const GLchar **>(&_shaderData)), NULL);
 		glCompileShader(_shaderId);
-		_isCompiled = true;			}
+		_isCompiled = true;
+	}
 }
 
 void ShaderScript::loadSourceShader()
 {
+	string binName = "cache/SCRIPT_" + getHashName() + ".bin";
+	if (filesystem::exists(binName.c_str()))
+	{
+		if (filesystem::last_write_time(binName.c_str()) > filesystem::last_write_time(_shaderPath))
+		{
+			_isLoaded = true;
+			_isCompiled = true;
+			// Load cached
+		}
+		else
+		{
+			// Load and build text script 
+		}
+	}
 	if (!_isLoaded)
 	{
 		debugMessage("Loading shader source");
@@ -40,6 +56,10 @@ void ShaderScript::loadSourceShader()
 
 void ShaderScript::loadBinShader()
 {
+	unique_ptr<hash<string>> hasher{};
+
+	auto path = "cache/SCRIPT_" + to_string((*hasher)(getName())) + ".bin";
+
 	//glShaderBinary(1,&_shaderType,); //incomplete...
 }
 
@@ -81,6 +101,7 @@ ShaderScript::ShaderScript(string pathToSource)
 }
 
 ShaderScript::ShaderScript(string path, GLenum type)
+	: _shaderId(glCreateShader(type))
 {
 	_shaderType = type;
 	_shaderPath = path;

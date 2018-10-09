@@ -14,11 +14,12 @@ namespace GameEngineM {
 		map<GLuint, string> _attributes;
 		map<string, GLint> _uniforms_locations;
 		GLuint _programId;
-
+		string _name;
+		string _hashName;
 	public:
 		void addUniform(string name) override;
 		void addUniformName(string name) override;
-		ShaderProgram() = default;
+		ShaderProgram();
 		ShaderProgram(IShaderScript * vertexShader, IShaderScript * fragmentShader);
 		ShaderProgram(map<GLenum, IShaderScript*> shaders);
 		inline void loadUniform(string name, GLfloat value)			override { loadUniform(_uniforms_locations[name], value); };
@@ -41,8 +42,12 @@ namespace GameEngineM {
 		void bindAttribute(GLuint attribute, string variableName) override;
 		void generateShaderProgram() override;
 		void load() override;
+
+		[[deprecated]]
 		void attachVertexShader(IShaderScript * vertexShader);
+		[[deprecated]]
 		void attachFragmentShader(IShaderScript * fragmentShader);
+		[[deprecated]]
 		void attachGeometryShader(IShaderScript* geometryShader);
 		virtual void start() override;
 		virtual void stop() override;
@@ -56,6 +61,26 @@ namespace GameEngineM {
 		const IShaderScript& getShaderScript(GLenum type) override;
 		void attachShader(IShaderScript *shader, GLenum shaderType) override;
 		GLuint getUniformLocation(string uniformName) override;
+		
+		virtual void setName(string name) {
+			_name = name;
+			_hashName = getHashName();
+		}
+
+		virtual string& getName() {
+			return _name;
+		}
+
+		inline virtual const string& getHashName()
+		{
+			unique_ptr<hash<string>>hasher{};
+			if (_hashName.empty())
+			{
+				return _hashName = to_string((*hasher)(getName()));
+			}
+			
+			return _hashName;
+		}
 	};
 }
 #endif __SHADER_PROGRAM_H

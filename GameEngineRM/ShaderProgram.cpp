@@ -1,6 +1,8 @@
 #include "ShaderProgram.h"
+#include <filesystem>
 
 using namespace GameEngineM;
+
 
 ShaderProgram::ShaderProgram(IShaderScript * vertexShader, IShaderScript * fragmentShader)
 	: _programId(glCreateProgram())
@@ -13,6 +15,12 @@ ShaderProgram::ShaderProgram(map<GLenum, IShaderScript*> shaders)
 	:  _programId(glCreateProgram()), _shaders(shaders)
 {
 
+}
+
+ShaderProgram::ShaderProgram()
+	:_programId(glCreateProgram())
+{
+	
 }
 
 ShaderProgram::~ShaderProgram()
@@ -49,7 +57,7 @@ void ShaderProgram::bindAttributes()
 
 void ShaderProgram::addUniform(string name)
 {
-	_uniforms_locations.insert(make_pair(name, 0));
+	_uniforms_locations.insert_or_assign(name, 0);
 }
 
 void ShaderProgram::addUniformName(string name)
@@ -59,10 +67,11 @@ void ShaderProgram::addUniformName(string name)
 }
 
 
-//[[DEPRECIATED("Using attachShader(IShaderScript*) instead.")]]
+//[[depricated("Using attachShader(IShaderScript*) instead.")]]
 //ShaderProgram::ShaderProgram(map<GLenum, IShaderScript*> shaders)
 //{
 //	_programId = glCreateProgram();
+//	_shaders.insert(shaders.begin(), shaders.end());
 //	//std::copy(shaders.begin(), shaders.end(), _shaders.begin())
 //}
 
@@ -92,52 +101,67 @@ void ShaderProgram::load()
 }
 void ShaderProgram::buildProgram()
 {
-
-	glProgramParameteri(_programId, GL_PROGRAM_BINARY_RETRIEVABLE_HINT, GL_TRUE);
-	glLinkProgram(_programId);
-	glValidateProgram(_programId);
-
+	GLint formats = 0;
 	GLint binaryLength = 0;
-	glGetProgramiv(_programId, GL_PROGRAM_BINARY_LENGTH, &binaryLength);
-	if (binaryLength > 0)
+	
+	glGetIntegerv(GL_NUM_PROGRAM_BINARY_FORMATS, &formats);
+	GLint * binaryFormats = new GLint[formats];
+	
+	glGetIntegerv(GL_PROGRAM_BINARY_FORMATS, binaryFormats);
+	u8 * binary;
+
+	if (filesystem::exists(("SHADER_" + _hashName + ".bin").c_str()))
 	{
-
-		GLint formats = 0;
-
-		glGetIntegerv(GL_NUM_PROGRAM_BINARY_FORMATS, &formats);
-		GLint* binaryFormats = new GLint[formats];
-		glGetIntegerv(GL_PROGRAM_BINARY_FORMATS, binaryFormats);
-		u8 * binary = new u8[binaryLength];
-		glGetProgramBinary(_programId, binaryLength, NULL, (GLenum*)binaryFormats, binary);
-
-		FILE* fp = fopen(("shader_" + to_string(_programId) + ".bin").c_str(), "wb");
-		fwrite(binary, binaryLength, 1, fp);
+		debugInfo("Cache file exists");
+		FILE* fp = fopen(("SHADER_" + _hashName + ".bin").c_str(), "rb");
+		fread(binaryFormats, sizeof(GLuint), formats, fp);
+		fread(&binaryLength, sizeof(GLuint), 1, fp);
+		binary = new u8[binaryLength];
+		fread(binary, binaryLength, 1, fp);
 		fclose(fp);
-		delete binary;
-		debugInfo("Shader cached successfully");
+		glProgramBinary(_programId, *binaryFormats, binary, binaryLength);
 	}
 	else
 	{
-		debugLog("Shader failed to cache");
+		glProgramParameteri(_programId, GL_PROGRAM_BINARY_RETRIEVABLE_HINT, GL_TRUE);
+		glLinkProgram(_programId);
+		glValidateProgram(_programId);
+		glGetProgramiv(_programId, GL_PROGRAM_BINARY_LENGTH, &binaryLength);
+		binary = new u8[binaryLength];
+		if (binaryLength > 0)
+		{
+			glGetProgramBinary(_programId, binaryLength, NULL, (GLenum*)binaryFormats, binary);
+			FILE* fp = fopen(("SHADER_" + _hashName + ".bin").c_str(), "wb");
+			fwrite(binaryFormats, sizeof(GLuint), formats, fp);
+			fwrite(&binaryLength, sizeof(GLuint), 1, fp);
+			fwrite(binary, binaryLength, 1, fp);
+			fclose(fp);
+			debugInfo("Shader cached successfully");
+		}
+		else
+		{
+			debugLog("Shader failed to cache");
+		}
 	}
+	delete binary;
 
 }
 
 
-[[DEPRECATED("Use attachShader(IShaderScript* script) instead")]]
+[[deprecated("Use attachShader(IShaderScript* script) instead")]]
 void ShaderProgram::attachVertexShader(IShaderScript * vertexShader)
 {
 	_shaders[GL_VERTEX_SHADER] = vertexShader;
 }
 
-[[DEPRECATED("Use attachShader(IShaderScript* script) instead")]]
+[[deprecated("Use attachShader(IShaderScript* script) instead")]]
 void ShaderProgram::attachFragmentShader(IShaderScript * fragmentShader)
 {
 	_shaders[GL_FRAGMENT_SHADER] = fragmentShader;
 
 }
 
-[[DEPRECATED("Use attachShader(IShaderScript* script) instead")]]
+[[deprecated("Use attachShader(IShaderScript* script) instead")]]
 void ShaderProgram::attachGeometryShader(IShaderScript * geometryShader)
 {
 	_shaders[GL_GEOMETRY_SHADER] = geometryShader;
@@ -146,7 +170,7 @@ void ShaderProgram::attachGeometryShader(IShaderScript * geometryShader)
 template<GLenum T>
 const IShaderScript& ShaderProgram::getShaderScript()
 {
-	return _shaders.at(T);
+	return *_shaders.at(T);
 }
 
 

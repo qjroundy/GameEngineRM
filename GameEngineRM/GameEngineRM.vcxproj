@@ -142,6 +142,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityRenderer.cpp" />
     <ClCompile Include="EntityShader.cpp" />
+    <ClCompile Include="FragmentShaderScript.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GUIRenderer.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="MainTester.cpp" />
     <ClCompile Include="MasterRenderer.cpp" />
     <ClCompile Include="Math.cpp" />
+    <ClCompile Include="MenuShader.cpp" />
     <ClCompile Include="ModelMesh.cpp" />
     <ClCompile Include="ModelTexture.cpp" />
     <ClCompile Include="ModelTexturedMesh.cpp" />
@@ -168,6 +170,7 @@
     <ClCompile Include="TerrainShader.cpp" />
     <ClCompile Include="TerrainTexture.cpp" />
     <ClCompile Include="TerrainTexturedMesh.cpp" />
+    <ClCompile Include="VertexShaderScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h" />
@@ -175,6 +178,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityRenderer.h" />
     <ClInclude Include="EntityShader.h" />
+    <ClInclude Include="FragmentShaderScript.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GUIRenderer.h" />
@@ -190,6 +194,7 @@
     <ClInclude Include="main\Main.h" />
     <ClInclude Include="MasterRenderer.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="MenuShader.h" />
     <ClInclude Include="ModelMesh.h" />
     <ClInclude Include="ModelTexture.h" />
     <ClInclude Include="ModelTexturedMesh.h" />
@@ -204,6 +209,7 @@
     <ClInclude Include="TerrainTexture.h" />
     <ClInclude Include="TerrainTexturedMesh.h" />
     <ClInclude Include="utility\common.hpp" />
+    <ClInclude Include="VertexShaderScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />

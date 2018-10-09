@@ -37,7 +37,8 @@ static ofstream __LOGFILE__;
 inline ostream& nl(ostream& o) { return o << NEWLINE; }
 
 using std::chrono::system_clock;
-
+#include <filesystem>
+using namespace std::experimental;
 #ifndef _NO_LOG_TIMESTAMP_
 #define TIMESTAMP TimeStamp << " : "
 inline ostream& TimeStamp(ostream& o)
