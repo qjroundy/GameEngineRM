@@ -13,8 +13,8 @@ namespace GameEngineM
 	class EnityAnimal : public Entity, Animal
 	{
 	public:
-		EnittyAnimal();
-		~EnittyAnimal();
+		EnityAnimal();
+		~EnityAnimal();
 	};
 
 }

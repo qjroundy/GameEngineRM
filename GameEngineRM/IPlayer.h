@@ -9,7 +9,7 @@
 namespace GameEngineM
 {
 
-	class IPlayer : public IEntity, IPlayer
+	class IPlayer : public IEntity 
 	{
 	public:
 		IPlayer();
