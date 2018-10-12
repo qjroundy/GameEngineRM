@@ -7,11 +7,11 @@ void MasterRenderer::attachRenderer(IRenderer* renderer)
 	_renderers.push_back(renderer);
 }
 
-void MasterRenderer::detachRenderer(Renderer renderer)
+void MasterRenderer::detachRenderer(IRenderer* renderer)
 {
 }
 
-MasterRenderer::MasterRenderer(vector<Renderer> renderers)
+MasterRenderer::MasterRenderer(vector<IRenderer*> renderers)
 {
 
 }

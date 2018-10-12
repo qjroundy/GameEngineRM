@@ -14,6 +14,7 @@
 #include "VertexShaderScript.h"
 #include "FragmentShaderScript.h"
 #include "PlayerShader.h"
+#include "Player.h"
 
 using namespace GameEngineM;
 
@@ -33,8 +34,8 @@ int main(int argc, char ** argv)
 	debugMessage("Creating Game...");
 	auto game = GameEngine.CreateGame();
 
-	//debugMessage("Initializing ALUT");
-	//alutInit(&argc, argv);
+	debugMessage("Initializing ALUT");
+	alutInit(&argc, argv);
 
 	auto m = alcOpenDevice(NULL);
 	auto c = alcCreateContext(m, NULL);

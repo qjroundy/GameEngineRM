@@ -137,77 +137,189 @@
     <None Include="scripts\vertexShader.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AI_TYPES.cpp" />
+    <ClCompile Include="Animal.cpp" />
+    <ClCompile Include="CAMERA_TYPES.cpp" />
+    <ClCompile Include="ComputeShaderScript.cpp" />
+    <ClCompile Include="Connection.cpp" />
     <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="DebugRenderer.cpp" />
+    <ClCompile Include="DebugShader.cpp" />
     <ClCompile Include="Display.cpp" />
+    <ClCompile Include="EnittyAnimal.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EntityLiving.cpp" />
+    <ClCompile Include="EntityLivingHostile.cpp" />
+    <ClCompile Include="EntityLivingNeutral.cpp" />
+    <ClCompile Include="EntityLivingPassive.cpp" />
+    <ClCompile Include="EntityNonLiving.cpp" />
     <ClCompile Include="EntityRenderer.cpp" />
     <ClCompile Include="EntityShader.cpp" />
     <ClCompile Include="FragmentShaderScript.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="GeometryShaderScript.cpp" />
     <ClCompile Include="GUIRenderer.cpp" />
+    <ClCompile Include="GUIShader.cpp" />
+    <ClCompile Include="Hostile.cpp" />
+    <ClCompile Include="IAI.cpp" />
+    <ClCompile Include="IAnimal.cpp" />
+    <ClCompile Include="IBreedable.cpp" />
+    <ClCompile Include="ICamera.cpp" />
+    <ClCompile Include="IConnection.cpp" />
+    <ClCompile Include="IDisplay.cpp" />
     <ClCompile Include="IEntity.cpp" />
+    <ClCompile Include="IError.cpp" />
+    <ClCompile Include="IHostile.cpp" />
+    <ClCompile Include="IEntityNeutral.cpp" />
+    <ClCompile Include="IEntityPassive.cpp" />
+    <ClCompile Include="IGame.cpp" />
+    <ClCompile Include="ILiving.cpp" />
+    <ClCompile Include="ILoader.cpp" />
+    <ClCompile Include="ILocalPlayer.cpp" />
     <ClCompile Include="IMesh.cpp" />
     <ClCompile Include="IModel.cpp" />
+    <ClCompile Include="INeutral.cpp" />
+    <ClCompile Include="INonLiving.cpp" />
+    <ClCompile Include="IPassive.cpp" />
+    <ClCompile Include="IPlayer.cpp" />
+    <ClCompile Include="IRemotePlayer.cpp" />
     <ClCompile Include="IRenderer.cpp" />
     <ClCompile Include="IShaderProgram.cpp" />
     <ClCompile Include="IShaderScript.cpp" />
+    <ClCompile Include="ITameable.cpp" />
     <ClCompile Include="ITerrain.cpp" />
     <ClCompile Include="ITexture.cpp" />
+    <ClCompile Include="Keyboard.cpp" />
+    <ClCompile Include="Living.cpp" />
+    <ClCompile Include="Loader.cpp" />
+    <ClCompile Include="LocalConnection.cpp" />
     <ClCompile Include="MainTester.cpp" />
     <ClCompile Include="MasterRenderer.cpp" />
     <ClCompile Include="Math.cpp" />
+    <ClCompile Include="MenuRenderer.cpp" />
     <ClCompile Include="MenuShader.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelMesh.cpp" />
     <ClCompile Include="ModelTexture.cpp" />
     <ClCompile Include="ModelTexturedMesh.cpp" />
     <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="Neutral.cpp" />
+    <ClCompile Include="NonLiving.cpp" />
+    <ClCompile Include="Passive.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerLocal.cpp" />
+    <ClCompile Include="PlayerRemote.cpp" />
+    <ClCompile Include="PlayerRenderer.cpp" />
     <ClCompile Include="PlayerShader.cpp" />
+    <ClCompile Include="RemoteConnection.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Settings.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="ShaderScript.cpp" />
     <ClCompile Include="TerrainMesh.cpp" />
+    <ClCompile Include="TerrainRenderer.cpp" />
     <ClCompile Include="TerrainShader.cpp" />
     <ClCompile Include="TerrainTexture.cpp" />
     <ClCompile Include="TerrainTexturedMesh.cpp" />
+    <ClCompile Include="TessalationControlShaderScript.cpp" />
+    <ClCompile Include="TessalationEvaluationShaderScript.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="VertexShaderScript.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AI_TYPES.h" />
+    <ClInclude Include="Animal.h" />
+    <ClInclude Include="CAMERA_TYPES.h" />
+    <ClInclude Include="ComputeShaderScript.h" />
+    <ClInclude Include="Connection.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="DebugRenderer.h" />
+    <ClInclude Include="DebugShader.h" />
     <ClInclude Include="Display.h" />
+    <ClInclude Include="EnittyAnimal.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="EntityLiving.h" />
+    <ClInclude Include="EntityLivingHostile.h" />
+    <ClInclude Include="EntityLivingNeutral.h" />
+    <ClInclude Include="EntityLivingPassive.h" />
+    <ClInclude Include="EntityNonLiving.h" />
     <ClInclude Include="EntityRenderer.h" />
     <ClInclude Include="EntityShader.h" />
     <ClInclude Include="FragmentShaderScript.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameEngine.h" />
+    <ClInclude Include="GeometryShaderScript.h" />
     <ClInclude Include="GUIRenderer.h" />
+    <ClInclude Include="GUIShader.h" />
+    <ClInclude Include="Hostile.h" />
+    <ClInclude Include="IAI.h" />
+    <ClInclude Include="IAnimal.h" />
+    <ClInclude Include="IBreedable.h" />
+    <ClInclude Include="ICamera.h" />
+    <ClInclude Include="IConnection.h" />
+    <ClInclude Include="IDisplay.h" />
     <ClInclude Include="IEntity.h" />
+    <ClInclude Include="IError.h" />
+    <ClInclude Include="IHostile.h" />
+    <ClInclude Include="IEntityNeutral.h" />
+    <ClInclude Include="IEntityPassive.h" />
+    <ClInclude Include="IGame.h" />
+    <ClInclude Include="ILiving.h" />
+    <ClInclude Include="ILoader.h" />
+    <ClInclude Include="ILocalPlayer.h" />
     <ClInclude Include="IMesh.h" />
     <ClInclude Include="IModel.h" />
+    <ClInclude Include="INeutral.h" />
+    <ClInclude Include="INonLiving.h" />
+    <ClInclude Include="IPassive.h" />
+    <ClInclude Include="IPlayer.h" />
+    <ClInclude Include="IRemotePlayer.h" />
     <ClInclude Include="IRenderer.h" />
     <ClInclude Include="IShaderProgram.h" />
     <ClInclude Include="IShaderScript.h" />
+    <ClInclude Include="ITameable.h" />
     <ClInclude Include="ITerrain.h" />
     <ClInclude Include="ITexture.h" />
+    <ClInclude Include="Keyboard.h" />
+    <ClInclude Include="Living.h" />
+    <ClInclude Include="Loader.h" />
+    <ClInclude Include="LocalConnection.h" />
     <ClInclude Include="MainTester.h" />
     <ClInclude Include="main\Main.h" />
     <ClInclude Include="MasterRenderer.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="MenuRenderer.h" />
     <ClInclude Include="MenuShader.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="ModelMesh.h" />
     <ClInclude Include="ModelTexture.h" />
     <ClInclude Include="ModelTexturedMesh.h" />
     <ClInclude Include="Mouse.h" />
+    <ClInclude Include="Neutral.h" />
+    <ClInclude Include="NonLiving.h" />
+    <ClInclude Include="Passive.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerLocal.h" />
+    <ClInclude Include="PlayerRemote.h" />
+    <ClInclude Include="PlayerRenderer.h" />
     <ClInclude Include="PlayerShader.h" />
+    <ClInclude Include="RemoteConnection.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Settings.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="ShaderScript.h" />
     <ClInclude Include="TerrainMesh.h" />
+    <ClInclude Include="TerrainRenderer.h" />
     <ClInclude Include="TerrainShader.h" />
     <ClInclude Include="TerrainTexture.h" />
     <ClInclude Include="TerrainTexturedMesh.h" />
+    <ClInclude Include="TessalationControlShaderScript.h" />
+    <ClInclude Include="TessalationEvaluationShaderScript.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="utility\common.hpp" />
     <ClInclude Include="VertexShaderScript.h" />
   </ItemGroup>
@@ -230,6 +342,7 @@
     <Import Project="..\packages\Assimp.redist.3.0.0\build\native\Assimp.redist.targets" Condition="Exists('..\packages\Assimp.redist.3.0.0\build\native\Assimp.redist.targets')" />
     <Import Project="..\packages\Assimp.3.0.0\build\native\Assimp.targets" Condition="Exists('..\packages\Assimp.3.0.0\build\native\Assimp.targets')" />
     <Import Project="..\packages\boost.1.67.0.0\build\boost.targets" Condition="Exists('..\packages\boost.1.67.0.0\build\boost.targets')" />
+    <Import Project="..\packages\nlohmann.json.3.2.0\build\native\nlohmann.json.targets" Condition="Exists('..\packages\nlohmann.json.3.2.0\build\native\nlohmann.json.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -248,5 +361,6 @@
     <Error Condition="!Exists('..\packages\Assimp.redist.3.0.0\build\native\Assimp.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Assimp.redist.3.0.0\build\native\Assimp.redist.targets'))" />
     <Error Condition="!Exists('..\packages\Assimp.3.0.0\build\native\Assimp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Assimp.3.0.0\build\native\Assimp.targets'))" />
     <Error Condition="!Exists('..\packages\boost.1.67.0.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost.1.67.0.0\build\boost.targets'))" />
+    <Error Condition="!Exists('..\packages\nlohmann.json.3.2.0\build\native\nlohmann.json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\nlohmann.json.3.2.0\build\native\nlohmann.json.targets'))" />
   </Target>
 </Project>

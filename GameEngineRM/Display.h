@@ -1,12 +1,14 @@
 #pragma once
 
-#ifndef __DISPLAY_H
-#define __DISPLAY_H
+#ifndef __DISPLAY_H_
+#define __DISPLAY_H_
+
 #include "utility/common.hpp"
+#include "IDisplay.h"
 
 namespace GameEngineM {
 
-	class _Display
+	class _Display : public IDisplay
 	{
 	private:
 		GLFWwindow * _window;

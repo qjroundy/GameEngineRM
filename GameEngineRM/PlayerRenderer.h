@@ -3,9 +3,9 @@
 #ifndef __PLAYER_RENDERER_H
 #define __PLAYER_RENDERER_H
 
+#include "utility/common.hpp"
 #include "Renderer.h"
 #include "ModelTexturedMesh.h"
-//#include "IPlayer.h"
 
 namespace GameEngineM
 {
