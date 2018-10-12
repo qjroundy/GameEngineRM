@@ -1,6 +1,6 @@
 #include "TessalationControlShaderScript.h"
 
-using namespace GameEngineM;
+
 
 TessalationControlShaderScript::TessalationControlShaderScript()
 {

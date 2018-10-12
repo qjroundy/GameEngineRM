@@ -5,8 +5,7 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
-{
+
 
 	class IHostile
 	{
@@ -15,5 +14,5 @@ namespace GameEngineM
 		~IHostile();
 	};
 
-}
+
 #endif /* __I_ENTITY_HOSTILE_H_ */

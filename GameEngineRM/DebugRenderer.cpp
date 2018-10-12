@@ -1,6 +1,6 @@
 #include "DebugRenderer.h"
 
-using namespace GameEngineM;
+
 
 DebugRenderer::DebugRenderer()
 {

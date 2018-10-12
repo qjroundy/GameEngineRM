@@ -8,8 +8,7 @@
 #include "Living.h"
 #include "Neutral.h"
 
-namespace GameEngineM
-{
+
 
 	class EntityLivingNeutral : public Entity, Living, Neutral
 	{
@@ -18,5 +17,5 @@ namespace GameEngineM
 		~EntityLivingNeutral();
 	};
 
-}
+
 #endif /* __ENTITY_LIVING_NEUTRAL_H_ */

@@ -4,8 +4,7 @@
 
 #include "ITexture.h"
 
-namespace GameEngineM
-{
+
 
 	class ModelTexture :
 		public ITexture
@@ -15,5 +14,5 @@ namespace GameEngineM
 		~ModelTexture();
 	};
 
-}
+
 #endif /* __MODEL_TEXTURE_H_ */

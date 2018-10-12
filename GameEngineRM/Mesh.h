@@ -5,8 +5,7 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
-{
+
 
 	class Mesh
 	{
@@ -15,5 +14,5 @@ namespace GameEngineM
 		~Mesh();
 	};
 
-}
+
 #endif /* __MESH_H */

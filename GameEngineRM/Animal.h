@@ -6,15 +6,11 @@
 #include "utility/common.hpp"
 #include "IAnimal.h"
 
-namespace GameEngineM
+class Animal : public IAnimal
 {
+public:
+	Animal();
+	~Animal();
+};
 
-	class Animal : public IAnimal
-	{
-	public:
-		Animal();
-		~Animal();
-	};
-
-}
 #endif // __ANIMAL_H

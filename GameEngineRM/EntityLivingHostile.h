@@ -8,8 +8,7 @@
 #include "Living.h"
 #include "Hostile.h"
 
-namespace GameEngineM
-{
+
 
 	class EntityLivingHostile : public Entity, public Living, public Hostile
 	{
@@ -18,5 +17,5 @@ namespace GameEngineM
 		~EntityLivingHostile();
 	};
 
-}
+
 #endif /* __ENTITY_LIVING_HOSTILE_H */

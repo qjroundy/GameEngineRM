@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "ShaderScript.h"
 
-namespace GameEngineM
-{
+
 
 	class GeometryShaderScript : public ShaderScript
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~GeometryShaderScript();
 	};
 
-}
+
 #endif // __GEOMETRY_SHADER_SCRIPT_H_

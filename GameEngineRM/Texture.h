@@ -5,8 +5,7 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
-{
+
 
 	class Texture
 	{
@@ -15,5 +14,5 @@ namespace GameEngineM
 		~Texture();
 	};
 
-}
+
 #endif /* __TEXTURE_H */

@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "ShaderScript.h"
 
-namespace GameEngineM
-{
+
 
 	class ComputeShaderScript : public ShaderScript
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~ComputeShaderScript();
 	};
 
-}
+
 #endif /* __COMPUTE_SHADER_SCRIPT_H_ */

@@ -6,8 +6,6 @@
 #include "utility/common.hpp"
 #include "Renderer.h"
 
-namespace GameEngineM
-{
 
 	class MenuRenderer : public Renderer
 	{
@@ -16,5 +14,5 @@ namespace GameEngineM
 		~MenuRenderer();
 	};
 
-}
+
 #endif /* __MENU_RENDERER_H_ */

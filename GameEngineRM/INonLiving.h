@@ -5,8 +5,7 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
-{
+
 
 	class INonLiving
 	{
@@ -15,5 +14,5 @@ namespace GameEngineM
 		~INonLiving();
 	};
 
-}
+
 #endif /* __I_NON_LIVING_H_ */

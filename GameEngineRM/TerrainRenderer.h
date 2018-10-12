@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "Renderer.h"
 
-namespace GameEngineM
-{
+
 
 	class TerrainRenderer : public Renderer
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~TerrainRenderer();
 	};
 
-}
+
 #endif /* __TERRAIN_RENDERER_H_ */

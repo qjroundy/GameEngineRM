@@ -5,15 +5,11 @@
 #include "utility/common.hpp"
 #include "ShaderProgram.h"
 
-namespace GameEngineM
+class MenuShader : public ShaderProgram
 {
-
-	class MenuShader : public ShaderProgram
-	{
-	public:
-		MenuShader();
-		~MenuShader();
-	};
+public:
+	MenuShader();
+	~MenuShader();
+};
 
 #endif /* __MENU_SHADER_H */
-}

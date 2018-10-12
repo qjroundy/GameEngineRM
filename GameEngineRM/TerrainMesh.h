@@ -3,8 +3,7 @@
 #define	  __TERRAIN_MESH_H_
 #include "IMesh.h"
 
-namespace GameEngineM
-{
+
 
 	class TerrainMesh : public IMesh
 	{
@@ -13,5 +12,5 @@ namespace GameEngineM
 		~TerrainMesh();
 	};
 
-}
+
 #endif /* __TERRAIN_MESH_H_ */

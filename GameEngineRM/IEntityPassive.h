@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "IEntity.h"
 
-namespace GameEngineM
-{
+
 
 	class IEntityPassive : public IEntity
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~IEntityPassive();
 	};
 
-}
+
 #endif /* __I_ENTITY_PASSIVE_H_ */

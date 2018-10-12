@@ -8,15 +8,11 @@
 #include "Living.h"
 #include "Passive.h"
 
-namespace GameEngineM 
+class EntityLivingPassive : public Entity, Living, Passive
 {
+public:
+	EntityLivingPassive();
+	~EntityLivingPassive();
+};
 
-	class EntityLivingPassive : public Entity, Living, Passive
-	{
-	public:
-		EntityLivingPassive();
-		~EntityLivingPassive();
-	};
-
-}
 #endif /* __ENTITY_LIVING_PASSIVE_H_ */

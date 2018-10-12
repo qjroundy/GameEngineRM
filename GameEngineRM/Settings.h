@@ -3,8 +3,7 @@
 #ifndef	  __SETTINGS_H_
 #define	  __SETTINGS_H_
 
-namespace GameEngineM
-{
+
 
 	class Settings
 	{
@@ -13,5 +12,5 @@ namespace GameEngineM
 		~Settings();
 	};
 
-}
+
 #endif /* __SETTINGS_H_ */

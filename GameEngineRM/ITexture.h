@@ -2,8 +2,7 @@
 #ifndef __I_TEXTURE_H
 #define __I_TEXTURE_H
 
-namespace GameEngineM
-{
+
 
 	class ITexture
 	{
@@ -12,5 +11,5 @@ namespace GameEngineM
 		~ITexture();
 	};
 
-}
+
 #endif // !__I_TEXTURE_H

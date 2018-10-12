@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "INeutral.h"
 
-namespace GameEngineM
-{
+
 
 	class Neutral : public INeutral
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~Neutral();
 	};
 
-}
+
 #endif /* __NEUTRAL_H_ */

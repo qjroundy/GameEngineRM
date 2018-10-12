@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "Renderer.h"
 
-namespace GameEngineM
-{
+
 
 	class DebugRenderer  : public Renderer
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~DebugRenderer();
 	};
 
-}
+
 #endif /* __DEBUG_RENDERER_H_ */

@@ -5,8 +5,7 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
-{
+
 
 	class IDisplay
 	{
@@ -15,5 +14,5 @@ namespace GameEngineM
 		~IDisplay();
 	};
 
-}
+
 #endif /* __I_DISPLAY_H_ */

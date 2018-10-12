@@ -7,10 +7,7 @@
 #include "Renderer.h"
 #include "ModelTexturedMesh.h"
 
-namespace GameEngineM
-{
-
-	class PlayerRenderer : public Renderer
+class PlayerRenderer : public Renderer
 	{
 	public:
 		PlayerRenderer();
@@ -27,5 +24,5 @@ namespace GameEngineM
 	};
 
 
-}
+
 #endif /* __PLAYER_RENDERER_H */

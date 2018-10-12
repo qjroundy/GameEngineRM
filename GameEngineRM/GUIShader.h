@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "ShaderProgram.h"
 
-namespace GameEngineM
-{
+
 
 	class GUIShader : public ShaderProgram
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~GUIShader();
 	};
 
-}
+
 #endif /* __GUI_SHADER_H_ */

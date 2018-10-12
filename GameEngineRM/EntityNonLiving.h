@@ -7,15 +7,11 @@
 #include "NonLiving.h"
 #include "Entity.h"
 
-namespace GameEngineM
+class EntityNonLiving : public Entity, public NonLiving
 {
+public:
+	EntityNonLiving();
+	~EntityNonLiving();
+};
 
-	class EntityNonLiving : public Entity, public NonLiving
-	{
-	public:
-		EntityNonLiving();
-		~EntityNonLiving();
-	};
-
-}
 #endif /* __ENITTY_NONLIVING_H_ */

@@ -7,8 +7,7 @@
 #include "Player.h"
 #include "RemoteConnection.h"
 
-namespace GameEngineM
-{
+
 
 	class PlayerRemote : public Player, public RemoteConnection
 	{
@@ -17,5 +16,5 @@ namespace GameEngineM
 		~PlayerRemote();
 	};
 
-}
+
 #endif /* __PLAYER_REMOTE_H_ */

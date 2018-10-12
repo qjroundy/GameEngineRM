@@ -6,21 +6,17 @@
 #include "Renderer.h"
 #include <vector>
 
-namespace GameEngineM
+class MasterRenderer
 {
-	class MasterRenderer
+	vector<IRenderer*> _renderers;
+public:
+	MasterRenderer() = default;
+	MasterRenderer(vector<IRenderer*> renderers);
 
-		//:public IRenderer
-	{
-		vector<IRenderer*> _renderers;
-	public:
-		MasterRenderer() = default;
-		MasterRenderer(vector<IRenderer*> renderers);
+	void attachRenderer(IRenderer* renderer);
+	void detachRenderer(IRenderer* renderer);
 
-		void attachRenderer(IRenderer* renderer);
-		void detachRenderer(IRenderer* renderer);
+	~MasterRenderer();
+};
 
-		~MasterRenderer();
-	};
-}
 #endif /* __MASTER_RENDERER_H */

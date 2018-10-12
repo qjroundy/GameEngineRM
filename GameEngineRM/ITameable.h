@@ -5,8 +5,7 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
-{
+
 
 	class ITameable
 	{
@@ -15,5 +14,5 @@ namespace GameEngineM
 		~ITameable();
 	};
 
-}
+
 #endif /* __I_TAMEABLE_H_ */

@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "IPlayer.h"
 
-namespace GameEngineM
-{
+
 
 	class IRemotePlayer : public IPlayer
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~IRemotePlayer();
 	};
 
-}
+
 #endif /* __I_REMOTE_PLAYER_H_ */

@@ -16,7 +16,7 @@
 #include "PlayerShader.h"
 #include "Player.h"
 
-using namespace GameEngineM;
+
 
 int main(int argc, char ** argv)
 {

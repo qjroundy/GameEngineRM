@@ -5,8 +5,7 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
-{
+
 
 	class IError
 	{
@@ -15,5 +14,5 @@ namespace GameEngineM
 		~IError();
 	};
 
-}
+
 #endif /* __I_ERROR_H_ */

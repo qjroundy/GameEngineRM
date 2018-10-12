@@ -2,7 +2,7 @@
 #include "IRenderer.h"
 #include "ShaderProgram.h"
 
-using namespace GameEngineM;
+
 
 void Renderer::changeShaderProgram(unique_ptr<IShaderProgram> shaderProgram)
 {

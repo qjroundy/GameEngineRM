@@ -5,8 +5,7 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
-{
+
 
 	class IGame
 	{
@@ -15,5 +14,5 @@ namespace GameEngineM
 		~IGame();
 	};
 
-}
+
 #endif /* __I_GAME_H_ */

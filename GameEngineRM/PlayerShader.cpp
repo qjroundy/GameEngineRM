@@ -3,8 +3,6 @@
 #include "FragmentShaderScript.h"
 #include "utility/common.hpp"
 
-using namespace GameEngineM;
-
 PlayerShader::PlayerShader()
 {
 	attachShader(new VertexShaderScript("scripts/PlayerVertexShader.glsl"), GL_VERTEX_SHADER);

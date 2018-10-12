@@ -1,14 +1,12 @@
 #include "EntityRenderer.h"
 #include "ShaderScript.h"
 
-using namespace GameEngineM;
-
-void GameEngineM::EntityRenderer::addEntities(IEntity * entity)
+void EntityRenderer::addEntities(IEntity * entity)
 {
 	_entities.push_back(entity);
 }
 
-void GameEngineM::EntityRenderer::addEntities(vector<IEntity*> entities)
+void EntityRenderer::addEntities(vector<IEntity*> entities)
 {
 	_entities.insert(_entities.begin(),entities.begin(), entities.end());
 }

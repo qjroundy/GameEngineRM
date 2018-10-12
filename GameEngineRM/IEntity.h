@@ -4,17 +4,12 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
+class IEntity
 {
-	class IEntity
-	{
-	protected:
+public:
+	IEntity();
+	~IEntity();
+};
 
-
-	public:
-		IEntity();
-		~IEntity();
-	};
-}
 #endif /* __I_ENTITY_H */
 

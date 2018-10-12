@@ -1,6 +1,6 @@
 #include "TerrainTexture.h"
 
-using namespace GameEngineM;
+
 
 TerrainTexture::TerrainTexture()
 {

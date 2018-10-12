@@ -5,15 +5,11 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
+class ILiving
 {
+public:
+	ILiving();
+	~ILiving();
+};
 
-	class ILiving
-	{
-	public:
-		ILiving();
-		~ILiving();
-	};
-
-}
 #endif /* __I_LIVING_H_ */

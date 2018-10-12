@@ -5,8 +5,7 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
-{
+
 
 	class IConnection
 	{
@@ -15,5 +14,5 @@ namespace GameEngineM
 		~IConnection();
 	};
 
-}
+
 #endif /* __I_CONNECTION_H_ */

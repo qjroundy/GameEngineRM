@@ -5,8 +5,7 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
-{
+
 
 	class IAI
 	{
@@ -15,5 +14,5 @@ namespace GameEngineM
 		~IAI();
 	};
 
-}
+
 #endif /* __I_AI_H_ */

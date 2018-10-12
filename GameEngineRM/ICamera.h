@@ -5,13 +5,12 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
-{
+
 	class ICamera
 	{
 	public:
 		ICamera();
 		~ICamera();
 	};
-}
+
 #endif /* __I_CAMERA_H */

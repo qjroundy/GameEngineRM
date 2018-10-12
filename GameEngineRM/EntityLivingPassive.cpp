@@ -1,7 +1,5 @@
 #include "EntityLivingPassive.h"
 
-using namespace GameEngineM;
-
 EntityLivingPassive::EntityLivingPassive()
 {
 }

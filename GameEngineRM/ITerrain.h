@@ -2,8 +2,7 @@
 #ifndef	  __MODEL_MESH_H
 #define	  __MODEL_MESH_H
 
-namespace GameEngineM
-{
+
 
 	class ITerrain
 	{
@@ -12,5 +11,5 @@ namespace GameEngineM
 		~ITerrain();
 	};
 
-}
+
 #endif /* __MODEL_MESH_H */

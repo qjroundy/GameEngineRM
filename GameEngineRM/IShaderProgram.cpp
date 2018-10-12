@@ -1,7 +1,7 @@
 #include "IShaderProgram.h"
 #include <algorithm>
 
-using namespace GameEngineM;
+
 
 IShaderProgram::~IShaderProgram()
 {

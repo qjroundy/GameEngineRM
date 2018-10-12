@@ -7,8 +7,7 @@
 #include "IEntity.h"
 
 
-namespace GameEngineM
-{
+
 
 	class IEntityNeutral : public IEntity
 	{
@@ -17,5 +16,5 @@ namespace GameEngineM
 		~IEntityNeutral();
 	};
 
-}
+
 #endif /* __I_ENTITY_NEUTRAL_H_ */

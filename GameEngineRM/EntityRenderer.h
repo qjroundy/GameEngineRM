@@ -6,20 +6,17 @@
 #include "IEntity.h"
 #include <vector>
 
-namespace GameEngineM
+class EntityRenderer : public Renderer
 {
-	class EntityRenderer : public Renderer
-	{
-		vector<IEntity*> _entities;
+	vector<IEntity*> _entities;
 
-	public:
+public:
 
-		void addEntities(IEntity* entity);
-		void addEntities(vector<IEntity*> entities);
+	void addEntities(IEntity* entity);
+	void addEntities(vector<IEntity*> entities);
 
-		EntityRenderer();
-		~EntityRenderer();
-	};
-}
+	EntityRenderer();
+	~EntityRenderer();
+};
 
 #endif /* __ENTITY_RENDERER_H */

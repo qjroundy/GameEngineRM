@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "IPlayer.h"
 
-namespace GameEngineM
-{
+
 
 	class ILocalPlayer : public IPlayer
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~ILocalPlayer();
 	};
 
-}
+
 #endif /* __I_LOCAL_PLAYER_H_ */

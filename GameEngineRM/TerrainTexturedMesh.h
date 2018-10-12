@@ -6,8 +6,7 @@
 #include "TerrainMesh.h"
 #include "ITerrain.h"
 
-namespace GameEngineM
-{
+
 
 	class TerrainTexturedMesh :
 		public TerrainTexture,
@@ -19,5 +18,5 @@ namespace GameEngineM
 		~TerrainTexturedMesh();
 	};
 
-}
+
 #endif /* __TERRAIN_TEXTURED_MODEL_H */

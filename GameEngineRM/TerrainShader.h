@@ -4,9 +4,7 @@
 
 #include "ShaderProgram.h"
 
-namespace GameEngineM
-{
-	class TerrainShader :
+class TerrainShader :
 		public ShaderProgram
 	{
 	public:
@@ -15,5 +13,5 @@ namespace GameEngineM
 
 		~TerrainShader();
 	};
-}
+
 #endif /* __SHADER_SCRIPT_H_ */

@@ -5,13 +5,11 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM {
+class IBreedable
+{
+public:
+	IBreedable();
+	~IBreedable();
+};
 
-	class IBreedable
-	{
-	public:
-		IBreedable();
-		~IBreedable();
-	};
-}
 #endif /* __I_BREEDABLE_H_ */

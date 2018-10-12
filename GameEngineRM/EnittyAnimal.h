@@ -7,8 +7,7 @@
 #include "Entity.h"
 #include "Animal.h"
 
-namespace GameEngineM
-{
+
 
 	class EnityAnimal : public Entity, Animal
 	{
@@ -17,6 +16,6 @@ namespace GameEngineM
 		~EnityAnimal();
 	};
 
-}
+
 
 #endif // __ENTITY_ANIMAL_H_

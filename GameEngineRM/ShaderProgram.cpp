@@ -1,7 +1,7 @@
 #include "ShaderProgram.h"
 #include <filesystem>
 
-using namespace GameEngineM;
+
 
 
 ShaderProgram::ShaderProgram(IShaderScript * vertexShader, IShaderScript * fragmentShader)

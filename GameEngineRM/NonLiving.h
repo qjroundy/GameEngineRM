@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "INonLiving.h"
 
-namespace GameEngineM
-{
+
 
 	class NonLiving : public INonLiving
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~NonLiving();
 	};
 
-}
+
 #endif /* __NONLIVING_H */

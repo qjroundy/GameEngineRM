@@ -1,6 +1,6 @@
 #include "ITexture.h"
 
-using namespace GameEngineM;
+
 
 ITexture::ITexture()
 {

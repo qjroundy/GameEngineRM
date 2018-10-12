@@ -7,15 +7,11 @@
 #include "IPlayer.h"
 #include "Entity.h"
 
-namespace GameEngineM
+class Player : public IPlayer
 {
+public:
+	Player();
+	~Player();
+};
 
-	class Player : public IPlayer
-	{
-	public:
-		Player();
-		~Player();
-	};
-
-}
 #endif /* __PLAYER_H_ */

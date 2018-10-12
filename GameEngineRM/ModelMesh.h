@@ -4,8 +4,7 @@
 
 #include "IMesh.h"
 
-namespace GameEngineM
-{
+
 
 	class ModelMesh :
 		public IMesh
@@ -15,6 +14,6 @@ namespace GameEngineM
 		~ModelMesh();
 	};
 
-}
+
 
 #endif /* __MODEL_MESH_H_ */

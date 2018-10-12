@@ -5,8 +5,7 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
-{
+
 
 	class Loader
 	{
@@ -15,5 +14,5 @@ namespace GameEngineM
 		~Loader();
 	};
 
-}
+
 #endif /* __LOADER_H_ */

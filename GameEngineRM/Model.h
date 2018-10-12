@@ -5,8 +5,7 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
-{
+
 
 	class Model
 	{
@@ -15,5 +14,5 @@ namespace GameEngineM
 		~Model();
 	};
 
-}
+
 #endif /* __MODEL_H_ */

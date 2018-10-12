@@ -6,19 +6,17 @@
 #ifndef __PLAYER_SHADER_H
 #define __PLAYER_SHADER_H
 
-namespace GameEngineM
+class PlayerShader :
+	public ShaderProgram
 {
-	class PlayerShader :
-		public ShaderProgram
-	{
-	private:
-		std::string _name;
-	public:
-		PlayerShader();
-		~PlayerShader();
+private:
+	std::string _name;
+public:
+	PlayerShader();
+	~PlayerShader();
 
-		void setName(string name) override;
-		string & getName() override;
-	};
-}
+	void setName(string name) override;
+	string & getName() override;
+};
+
 #endif /* __I_SHADER_PROGRAM_H */

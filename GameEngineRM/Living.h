@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "ILiving.h"
 
-namespace GameEngineM
-{
+
 
 	class Living : public ILiving
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~Living();
 	};
 
-}
+
 #endif /* __LIVING_H */

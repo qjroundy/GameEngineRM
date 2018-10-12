@@ -6,15 +6,11 @@
 #include "utility/common.hpp"
 #include "ShaderScript.h"
 
-namespace GameEngineM
+class VertexShaderScript : public ShaderScript
 {
+public:
+	VertexShaderScript(string path);
+	~VertexShaderScript();
+};
 
-	class VertexShaderScript : public ShaderScript
-	{
-	public:
-		VertexShaderScript(string path);
-		~VertexShaderScript();
-	};
-
-}
 #endif /* __VERTEX_SHADER_SCRIPT_H */

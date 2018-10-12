@@ -2,8 +2,7 @@
 #ifndef __DEBUG_H_
 #define __DEBUG_H_
 
-namespace GameEngineM
-{
+
 
 	class Debug
 	{
@@ -12,6 +11,6 @@ namespace GameEngineM
 		~Debug();
 	};
 
-}
+
 #endif /* __DEBUG_H_ */
 

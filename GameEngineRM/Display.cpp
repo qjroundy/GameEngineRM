@@ -1,7 +1,5 @@
 #include "Display.h"
 
-using namespace GameEngineM;
-
 _Display::_Display() 
 {
 }

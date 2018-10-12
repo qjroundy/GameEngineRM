@@ -1,6 +1,6 @@
 #include "ModelMesh.h"
 
-using namespace GameEngineM;
+
 
 ModelMesh::ModelMesh()
 {

@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "Connection.h"
 
-namespace GameEngineM
-{
+
 
 	class RemoteConnection : public Connection
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~RemoteConnection();
 	};
 
-}
+
 #endif /* __REMOTE_CONNECTION_H */

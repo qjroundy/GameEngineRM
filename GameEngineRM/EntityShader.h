@@ -3,8 +3,7 @@
 #define __ENTITY_SHADER_H
 #include "IShaderProgram.h"
 
-namespace GameEngineM
-{
+
 
 	class EntityShader :
 		public IShaderProgram
@@ -13,6 +12,6 @@ namespace GameEngineM
 		EntityShader();
 		~EntityShader();
 	};
-}
+
 
 #endif /* __ENTITY_SHADER_H */

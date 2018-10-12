@@ -1,6 +1,6 @@
 #include "Connection.h"
 
-using namespace GameEngineM;
+
 
 Connection::Connection()
 {

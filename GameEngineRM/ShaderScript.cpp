@@ -4,7 +4,7 @@
 #include <cstdarg>
 #include <filesystem>
 
-using namespace GameEngineM;
+
 
 void ShaderScript::compileShader()
 {

@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "ShaderProgram.h"
 
-namespace GameEngineM
-{
+
 
 	class DebugShader : public ShaderProgram
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~DebugShader();
 	};
 
-}
+
 #endif /* __DEBUG_SHADER_H_ */

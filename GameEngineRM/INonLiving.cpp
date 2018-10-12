@@ -1,6 +1,6 @@
 #include "INonLiving.h"
 
-using namespace GameEngineM;
+
 
 INonLiving::INonLiving()
 {

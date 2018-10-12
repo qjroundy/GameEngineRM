@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "ShaderScript.h"
 
-namespace GameEngineM
-{
+
 
 	class TessalationEvaluationShaderScript : public ShaderScript
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~TessalationEvaluationShaderScript();
 	};
 
-}
+
 #endif /* __TESSALATION_EVALUATION_SHADER_SCRIPT_H_ */

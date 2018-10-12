@@ -1,7 +1,5 @@
 #include "Mouse.h"
 
-using namespace GameEngineM;
-
 Mouse::~Mouse()
 {
 }

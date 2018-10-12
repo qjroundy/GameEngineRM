@@ -5,8 +5,7 @@
 
 #include "utility/common.hpp"
 
-namespace GameEngineM
-{
+
 
 	class Keyboard
 	{
@@ -15,5 +14,5 @@ namespace GameEngineM
 		~Keyboard();
 	};
 
-}
+
 #endif /* __KEYBOARD_H_ */

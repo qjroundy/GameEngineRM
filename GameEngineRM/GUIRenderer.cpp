@@ -1,21 +1,21 @@
 #include "GUIRenderer.h"
 
-using namespace GameEngineM;
 
 
-void GameEngineM::GUIRenderer::init()
+
+void GUIRenderer::init()
 {
 }
 
-void GameEngineM::GUIRenderer::start()
+void GUIRenderer::start()
 {
 }
 
-void GameEngineM::GUIRenderer::stop()
+void GUIRenderer::stop()
 {
 }
 
-void GameEngineM::GUIRenderer::render()
+void GUIRenderer::render()
 {
 }
 

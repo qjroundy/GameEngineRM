@@ -6,9 +6,7 @@
 #include "Renderer.h"
 #include "assimp/material.h"
 
-namespace GameEngineM  
-{
-	class GUIRenderer : public Renderer
+class GUIRenderer : public Renderer
 	{
 	public:
 		//void addBGImage();
@@ -30,5 +28,5 @@ namespace GameEngineM
 		GUIRenderer();
 		~GUIRenderer();
 	};
-}
+
 #endif /* __GUI_RENDERER_H */

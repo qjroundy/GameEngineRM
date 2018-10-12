@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "IHostile.h"
 
-namespace GameEngineM
-{
+
 
 	class Hostile : public IHostile
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~Hostile();
 	};
 
-}
+
 #endif /* __HOSTILE_H */

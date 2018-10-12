@@ -7,8 +7,7 @@
 #include "Player.h"
 #include "LocalConnection.h"
 
-namespace GameEngineM
-{
+
 
 	class PlayerLocal : public Player, public LocalConnection
 	{
@@ -17,5 +16,5 @@ namespace GameEngineM
 		~PlayerLocal();
 	};
 
-}
+
 #endif /* __PLAYER_LOCAL_H_ */

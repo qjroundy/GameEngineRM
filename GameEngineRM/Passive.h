@@ -6,8 +6,7 @@
 #include "utility/common.hpp"
 #include "IPassive.h"
 
-namespace GameEngineM
-{
+
 
 	class Passive : public IPassive
 	{
@@ -16,5 +15,5 @@ namespace GameEngineM
 		~Passive();
 	};
 
-}
+
 #endif /* __PASSIVE_H_ */
