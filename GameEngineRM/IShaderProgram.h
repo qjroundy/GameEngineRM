@@ -36,7 +36,9 @@ public:
 
 	virtual void buildProgram() = 0;
 	IShaderProgram() = default;
-	//IShaderProgram(IShaderScript * vertexShader, IShaderScript * fragmentShader);
+
+	[[DEPRECATED]]
+	IShaderProgram(IShaderScript * vertexShader, IShaderScript * fragmentShader) = 0;
 	~IShaderProgram();
 
 	virtual const IShaderScript& operator[](GLenum type) = 0;

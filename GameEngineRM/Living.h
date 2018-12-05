@@ -6,14 +6,13 @@
 #include "utility/common.hpp"
 #include "ILiving.h"
 
-
-
-	class Living : public ILiving
-	{
-	public:
-		Living();
-		~Living();
-	};
-
+class Living : public ILiving
+{
+public:
+	int currentHealth;
+	int maxHealth;
+	Living();
+	~Living();
+};
 
 #endif /* __LIVING_H */

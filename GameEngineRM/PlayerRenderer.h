@@ -16,7 +16,8 @@ class PlayerRenderer : public Renderer
 		virtual void start() override;
 		virtual void stop() override;
 		virtual void init() override;
-		virtual void render() override;
+		void render(ModelTexturedMesh playerModel);
+		virtual void renderer() override;
 
 		//void addPlayer(IPlayer player);
 		void setTexturedMesh_firstPerson(ModelTexturedMesh playerModel);

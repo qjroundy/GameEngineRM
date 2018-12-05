@@ -13,10 +13,10 @@ private:
 	unique_ptr<IShaderProgram> _shaderProgram;
 
 public:
-	void start() override {};
-	void stop() override {};
+	void start() override { glUseProgram(_shaderProgram->programId()); };
+	void stop() override { glUseProgram(NULL); };
 	void init() override {};
-	void render() override {};
+	virtual void render() = 0;
 	void setShaderProgram(unique_ptr<IShaderProgram> shaderProgram) override;
 	const IShaderProgram& getShaderProgram(void) override;
 	void changeShaderProgram(unique_ptr<IShaderProgram> shaderProgram) override;

@@ -7,15 +7,11 @@
 #include "EntityAnimal.h"
 #include "Hostile.h"
 
-
-
-	class EntityAnimalHostile : public EntityAnimal, Hostile
-	{
-	public:
-		EntityAnimalHostile();
-		~EntityAnimalHostile();
-	};
-
-
+class EntityAnimalHostile : public EntityAnimal, Hostile
+{
+public:
+	EntityAnimalHostile();
+	~EntityAnimalHostile();
+};
 
 #endif // !__ENTITY_ANIMAL_HOSTILE_H_

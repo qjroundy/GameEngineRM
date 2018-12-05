@@ -15,7 +15,7 @@
 #include "FragmentShaderScript.h"
 #include "PlayerShader.h"
 #include "Player.h"
-
+#include "EntityAnimalHostile.h"
 
 
 int main(int argc, char ** argv)
@@ -30,7 +30,7 @@ int main(int argc, char ** argv)
 
 	debugMessage("Starting Engine");
 	GameEngine.Init();
-	
+
 	debugMessage("Creating Game...");
 	auto game = GameEngine.CreateGame();
 
@@ -69,7 +69,7 @@ int main(int argc, char ** argv)
 	playerShaderProgram->load();
 	std::cout << playerShaderProgram->getUniformLocation("transformationMatrix") << nl;
 #endif
-	
+
 	// create Master renderer
 	debugInfo("Creating master Renderer");
 	unique_ptr<MasterRenderer> masterRenderer(new MasterRenderer());

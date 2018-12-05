@@ -261,12 +261,6 @@
     <ClCompile Include="IAI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AI_TYPES.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CAMERA_TYPES.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="EntityLivingNeutral.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -337,6 +331,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EntityAnimal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Breedable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VAO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -651,6 +654,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EntityAnimal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Breedable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VAO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VBO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

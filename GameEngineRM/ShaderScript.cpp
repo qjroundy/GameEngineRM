@@ -21,7 +21,28 @@ void ShaderScript::compileShader()
 
 void ShaderScript::loadSourceShader()
 {
+
+
 	string binName = "cache/SCRIPT_" + getHashName() + ".bin";
+
+	bool scriptExists = filesystem::exists(_shaderPath);
+	bool binExists = filesystem::exists(binName);
+	auto scriptLastWrite = filesystem::last_write_time(_shaderPath);
+	auto binLastWrite = filesystem::last_write_time(binName);
+	
+	cout << "Script Exists: " << scriptExists << nl;
+	cout << "Bin Exists: " << binExists << nl;
+	//cout << "Script Last Write: " << scriptLastWrite.time_since_epoch << nl;
+	//cout << "Bin Last Write: " << binLastWrite.time_since_epoch << nl;
+
+
+	//auto age = scriptLastWrite.time_since_epoch - binLastWrite.time_since_epoch;
+	//cout << age << nl;
+	
+	//bool scriptOlder = age < 0;
+
+	//cout << scriptOlder << nl;
+
 	if (filesystem::exists(binName.c_str()))
 	{
 		if (filesystem::last_write_time(binName.c_str()) > filesystem::last_write_time(_shaderPath))

@@ -6,15 +6,11 @@
 #include "Entity.h"
 #include "Animal.h"
 
-
-
-	class EntityAnimal
-	{
-	public:
-		EntityAnimal();
-		~EntityAnimal();
-	};
-
-
+class EntityAnimal : public Entity, Animal
+{
+public:
+	EntityAnimal();
+	~EntityAnimal();
+};
 
 #endif // !__ENTITY_ANIMAL_H_
